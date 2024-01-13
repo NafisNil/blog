@@ -406,3 +406,6 @@ hr.invoice-above-table {
 .tox .tox-notification {
     display: none !important;
 }
+.is-invalid{
+    border-color: rgba(255, 0, 0, 0.767) !important;
+}
