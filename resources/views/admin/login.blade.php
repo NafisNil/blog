@@ -29,6 +29,9 @@
                             <div class="card-body card-body-auth">
                                 <form method="POST" action="{{ route('admin_login_submit') }}">
                                     @csrf
+                                    @if (session()->get('success'))
+                                    <div class="text-success">{{ session()->get('success') }}</div>
+                                @endif
                                     <div class="form-group">
                                         <input type="email" class="form-control" name="email" placeholder="Email Address" value="{{ old('email') }}" @error('email') is-invalid @enderror autofocus>
                                         @error('email')
