@@ -16,8 +16,9 @@ use App\Http\Controllers\Frontend\HomeController;
 |
 */
 
-
+//frontend
 Route::get('/', [HomeController::class, 'index'])->name('index');
+//frontend
 //admin route
 Route::get('/admin/home', [AdminHomeController::class, 'index'])->name('admin_home')->middleware('admin:admin');
 Route::get('/admin/login', [AdminLoginController::class, 'index'])->name('admin_login');
