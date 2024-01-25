@@ -10,10 +10,10 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" href="{{ route('index') }}">Home</a>
+                    <a class="nav-link {{ Request::is('/') ? 'active':'' }} " href="{{ route('index') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="about.html">About</a>
+                    <a class="nav-link {{ Request::is('about') ? 'active':'' }}" href="{{ route('about') }}">About</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="service.html">Services</a>
