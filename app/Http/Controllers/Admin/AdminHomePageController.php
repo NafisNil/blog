@@ -4,11 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Models\HomePageItem;
 class AdminHomePageController extends Controller
 {
     //
     public function index(){
-        return view('admin.home_banner_show');
+        $page_data = HomePageItem::where('id', 1)->first();
+        return view('admin.home_banner_show', compact('page_data'));
     }
 }
