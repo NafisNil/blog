@@ -35,5 +35,6 @@ Route::post('/admin/reset-password-submit', [AdminLoginController::class, 'reset
 Route::get('/admin/edit-profile', [AdminProfileController::class, 'index'])->name('admin_profile')->middleware('admin:admin');
 Route::post('/admin/edit-profile-submit', [AdminProfileController::class, 'profile_submit'])->name('admin_profile_submit');
 
-Route::get('/admin/home-banner', [AdminHomePsgeController::class, 'index'])->name('admin_home_banner')->middleware('admin:admin');
+Route::get('/admin/home-banner', [AdminHomePageController::class, 'index'])->name('admin_home_banner')->middleware('admin:admin');
+Route::post('/admin/home-banner-submit', [AdminHomePageController::class, 'store'])->name('admin_home_banner_submit')->middleware('admin:admin');
 //admin route

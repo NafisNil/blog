@@ -10,12 +10,12 @@
 
         <ul class="sidebar-menu">
 
-            <li class="active"><a class="nav-link" href="{{ route('admin_home') }}"><i class="fas fa-hand-point-right"></i> <span>@yield('title')</span></a></li>
+            <li class="{{ Request::is('/admin/home') ? 'active':'' }}"><a class="nav-link" href="{{ route('admin_home') }}"><i class="fas fa-hand-point-right"></i> <span>Dashboard</span></a></li>
 
-            <li class="nav-item dropdown active">
+            <li class="nav-item dropdown {{ Request::is('/admin/home-banner') ? 'active':'' }}">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-hand-point-right"></i><span>Home page</span></a>
                 <ul class="dropdown-menu">
-                    <li class="active"><a class="nav-link" href="{{ route('admin_home_banner') }}"><i class="fas fa-angle-right"></i> Banner</a></li>
+                    <li class="{{ Request::is('/admin/home-banner') ? 'active':'' }}"><a class="nav-link" href="{{ route('admin_home_banner') }}"><i class="fas fa-angle-right"></i> Banner</a></li>
                     <li class=""><a class="nav-link" href=""><i class="fas fa-angle-right"></i> Item 2</a></li>
                 </ul>
             </li>

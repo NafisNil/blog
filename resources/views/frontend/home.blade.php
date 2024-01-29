@@ -3,23 +3,23 @@
 @section('content')
 <div class="home-banner">
     <div class="container">
-        <div class="row">
+        <div class="row pt-5 pb-5">
             <div class="col-md-6 d-flex align-items-center">
                 <div class="left">
-                    <h4>Hello, I'm</h4>
-                    <h2>Morshedul Arefin</h2>
-                    <h3>Professional Web Developer</h3>
+                    <h4>{{ @$page_data->banner_title }}</h4>
+                    <h2>{{ @$page_data->banner_person_name }}</h2>
+                    <h3>{!! @$page_data->banner_person_designation !!}</h3>
                     <p>
-                        I am 25 years old web designer & developer; and working to build websites for my international clients.
+                        {{ @$page_data->banner_description }}
                     </p>
                     <div class="button">
-                        <a href="contact.html" class="btn btn-primary">Hire Me</a>
+                        <a href="{{ @$page_data->banner_button_url }}" class="btn btn-primary">{{ @$page_data->banner_button_text }}</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="right">
-                    <img src="{{ asset('dist_frontend') }}/images/man.png" alt="">
+                    <img src="{{ asset('uploads/' . $page_data->banner_photo) }}" alt="">
                 </div>
             </div>
         </div>
