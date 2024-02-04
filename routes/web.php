@@ -37,4 +37,10 @@ Route::post('/admin/edit-profile-submit', [AdminProfileController::class, 'profi
 
 Route::get('/admin/home-banner', [AdminHomePageController::class, 'index'])->name('admin_home_banner')->middleware('admin:admin');
 Route::post('/admin/home-banner-submit', [AdminHomePageController::class, 'store'])->name('admin_home_banner_submit')->middleware('admin:admin');
+
+Route::get('/admin/home-about', [AdminHomePageController::class, 'about'])->name('admin_home_about')->middleware('admin:admin');
+Route::post('/admin/home-about-update', [AdminHomePageController::class, 'about_update'])->name('admin_home_about_update')->middleware('admin:admin');
+
+Route::get('/admin/home-skill', [AdminHomePageController::class, 'skill'])->name('admin_home_skill')->middleware('admin:admin');
+Route::post('/admin/home-skill-update', [AdminHomePageController::class, 'skill_update'])->name('admin_home_skill_update')->middleware('admin:admin');
 //admin route

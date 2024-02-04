@@ -26,24 +26,21 @@
     </div>
 </div>
 
+@if ($page_data->about_status == '1')
+
 <div class="home-about">
     <div class="container">
         <div class="row">
             <div class="col-md-4">
                 <div class="left wow fadeInLeft">
-                    <img src="{{ asset('dist_frontend') }}/images/man2.jpg" alt="">
+                    <img src="{{ asset('uploads/' . $page_data->about_photo) }}" alt="">
                 </div>
             </div>
             <div class="col-md-8">
                 <div class="right wow fadeInRight">
-                    <h3>Who Am I</h3>
-                    <h2>About Me</h2>
-                    <p>
-                        I am an experienced web developers from Bangladesh. I am working in my field for about the last 10+ years. I worked on Laravel Development, WordPress Theme and Plugin Development etc.
-                    </p>
-                    <p>
-                        I have created a lot of online courses and I have over 3000 students online who are learning well from my lectures. I hope if you enroll you will also enjoy.
-                    </p>
+                    <h3>{{ @$page_data->about_subtitle }}</h3>
+                    <h2>{{ @$page_data->about_title }}</h2>
+                  {!!  nl2br(@$page_data->about_description) !!}
                     <div class="contact-info">
                         <div class="table-responsive">
                             <table class="table">
@@ -51,19 +48,19 @@
                                     <td><i class="far fa-user"></i></td>
                                     <td>Name</td>
                                     <td>:</td>
-                                    <td>Morshedul Arefin</td>
+                                    <td>{{ @$page_data->about_person_name}}</td>
                                 </tr>
                                 <tr>
                                     <td><i class="fas fa-phone"></i></td>
                                     <td>Phone</td>
                                     <td>:</td>
-                                    <td>123-333-4342</td>
+                                    <td>{{ @$page_data->about_person_phone}}</td>
                                 </tr>
                                 <tr>
                                     <td><i class="far fa-envelope"></i></td>
                                     <td>Email</td>
                                     <td>:</td>
-                                    <td>arefindev@gmail.com</td>
+                                    <td>{{ @$page_data->about_person_email}}</td>
                                 </tr>
                             </table>
                         </div>
@@ -71,10 +68,11 @@
                     <div class="social">
                         <h3>Find me on social media:</h3>
                         <ul>
-                            <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href=""><i class="fab fa-twitter"></i></a></li>
-                            <li><a href=""><i class="fab fa-linkedin-in"></i></a></li>
-                            <li><a href=""><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="{{ @$page_data->about_icon1_url }}"><i class="{{ @$page_data->about_icon1}}"></i></a></li>
+                            <li><a href="{{ @$page_data->about_icon2_url }}"><i class="{{ @$page_data->about_icon2}}"></i></a></li>
+                            <li><a href="{{ @$page_data->about_icon3_url }}"><i class="{{ @$page_data->about_icon3}}"></i></a></li>
+                            <li><a href="{{ @$page_data->about_icon4_url }}"><i class="{{ @$page_data->about_icon4}}"></i></a></li>
+                            <li><a href="{{ @$page_data->about_icon5_url }}"><i class="{{ @$page_data->about_icon5}}"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -82,13 +80,17 @@
         </div>
     </div>
 </div>
+    
+@endif
+
+@if ($page_data->skill_status == '1')
 
 <div class="home-skill">
     <div class="container">
         <div class="row">
             <div class="col-md-12 heading">
-                <h2>My Skill</h2>
-                <h3>My Expertise Area</h3>
+                <h2>{{ @$page_data->skill_title }}</h2>
+                <h3>{{ @$page_data->skill_subtitle }}</h3>
             </div>
             <div class="col-md-6 wow fadeInLeft">
 
@@ -136,7 +138,8 @@
         </div>
     </div>
 </div>
-
+    
+@endif
 
 <div class="home-qualification">
     <div class="container">
