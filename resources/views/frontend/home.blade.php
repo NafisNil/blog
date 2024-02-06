@@ -93,47 +93,34 @@
                 <h3>{{ @$page_data->skill_subtitle }}</h3>
             </div>
             <div class="col-md-6 wow fadeInLeft">
-
-                <div class="progress-text">Photoshop</div>
+                @php
+                    $i = 0;
+                @endphp
+                @foreach ($left_skill as $item)
+                @php
+                    $i++;
+                @endphp
+                <div class="progress-text">{{ $item->name }}</div>
                 <div class="progress">
-                    <div class="progress-bar w-70-p w-0" role="progressbar" aria-label="Example with label" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">70%</div>
-                </div>
+                    <div class="progress-bar anim_left{{ $i }} w-80-p w-0" role="progressbar" aria-label="Example with label" aria-valuenow={{ $item->percentage }}" aria-valuemin="0" aria-valuemax="100">{{ $item->percentage }}%</div>
+                </div>                    
+                @endforeach
 
-                <div class="progress-text">Illustrator</div>
-                <div class="progress">
-                    <div class="progress-bar w-80-p w-0" role="progressbar" aria-label="Example with label" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
-                </div>
-
-                <div class="progress-text">Graphic Design</div>
-                <div class="progress">
-                    <div class="progress-bar w-65-p w-0" role="progressbar" aria-label="Example with label" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">65%</div>
-                </div>
-
-                <div class="progress-text">Search Engine Optimization</div>
-                <div class="progress">
-                    <div class="progress-bar w-55-p w-0" role="progressbar" aria-label="Example with label" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">55%</div>
-                </div>
             </div>
             <div class="col-md-6 wow fadeInRight">
-                <div class="progress-text">Laravel</div>
-                <div class="progress">
-                    <div class="progress-bar w-70-p w-0" role="progressbar" aria-label="Example with label" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">70%</div>
-                </div>
+                @php
+                $i = 0;
+            @endphp
+            @foreach ($right_skill as $item)
+            @php
+                $i++;
+            @endphp
+            <div class="progress-text">{{ $item->name }}</div>
+            <div class="progress">
+                <div class="progress-bar anim_right{{ $i }} w-80-p w-0" role="progressbar" aria-label="Example with label" aria-valuenow={{ $item->percentage }}" aria-valuemin="0" aria-valuemax="100">{{ $item->percentage }}%</div>
+            </div>                    
+            @endforeach
 
-                <div class="progress-text">WordPress</div>
-                <div class="progress">
-                    <div class="progress-bar w-80-p w-0" role="progressbar" aria-label="Example with label" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
-                </div>
-
-                <div class="progress-text">Python</div>
-                <div class="progress">
-                    <div class="progress-bar w-65-p w-0" role="progressbar" aria-label="Example with label" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">65%</div>
-                </div>
-
-                <div class="progress-text">Java</div>
-                <div class="progress">
-                    <div class="progress-bar w-55-p w-0" role="progressbar" aria-label="Example with label" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">55%</div>
-                </div>
             </div>
         </div>
     </div>
@@ -562,4 +549,31 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('skill_animation')
+@php
+    $i = 0;
+@endphp
+@foreach ($left_skill as $item)
+@php
+    $i++;
+@endphp
+    <script>
+        $(".anim_left{{ $i }}").animate({width:"{{ $item->percentage }}"}, 2500);
+    </script>    
+@endforeach
+
+
+@php
+    $i = 0;
+@endphp
+@foreach ($right_skill as $item)
+@php
+    $i++;
+@endphp
+    <script>
+        $(".anim_right{{ $i }}").animate({width:"{{ $item->percentage }}"}, 2500);
+    </script>    
+@endforeach
 @endsection

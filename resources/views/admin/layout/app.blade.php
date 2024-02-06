@@ -28,9 +28,9 @@
         <div class="main-content">
             <section class="section">
                 <div class="section-header">
-                    <h1>Dashboard</h1>
+                    <h1>@yield('title')</h1>
                     <div class="ml-auto">
-                        <a href="" class="btn btn-primary"><i class="fas fa-plus"></i> Button</a>
+                        @yield('rightside_button')
                     </div>
                 </div>
          
@@ -65,5 +65,7 @@
         });
     </script>
 @endif
+
+@yield('skill_animation')
 </body>
 </html>
