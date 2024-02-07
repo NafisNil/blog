@@ -18,6 +18,7 @@
                     <li class="{{ Request::is('/admin/home-banner') ? 'active':'' }}"><a class="nav-link" href="{{ route('admin_home_banner') }}"><i class="fas fa-angle-right"></i> Banner Section</a></li>
                     <li class="{{ Request::is('/admin/home-about') ? 'active':'' }}"><a class="nav-link" href="{{ route('admin_home_about') }}"><i class="fas fa-angle-right"></i> About Section</a></li>
                     <li class="{{ Request::is('/admin/home-skill') ? 'active':'' }}"><a class="nav-link" href="{{ route('admin_home_skill') }}"><i class="fas fa-angle-right"></i> Skill Section</a></li>
+                    <li class="{{ Request::is('/admin/home-qualification') ? 'active':'' }}"><a class="nav-link" href="{{ route('admin_home_qualification') }}"><i class="fas fa-angle-right"></i> Qualification Section</a></li>
                 </ul>
             </li>
 
