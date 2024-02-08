@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('degree');
             $table->string('institute');
             $table->string('time');
-            $table->integer('item_order');
+            $table->string('item_order');
             $table->timestamps();
         });
     }
