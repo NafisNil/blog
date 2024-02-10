@@ -132,34 +132,24 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 heading">
-                <h2>My Qualification</h2>
-                <h3>Education and Experience</h3>
+                <h2>{{ $page_data->qualification_subtitle}}</h2>
+                <h3>{{ $page_data->qualification_title}}</h3>
             </div>
             <div class="col-md-6">
-                <h2 class="title"><i class="fas fa-graduation-cap"></i> Education</h2>
+                <h2 class="title"><i class="fas fa-graduation-cap"></i> {{ $page_data->education_title}}</h2>
                 <div class="inner">
+                    @foreach ($education as $item)
                     <div class="item wow fadeInUp">
-                        <h3>B.Sc. in Computer Science and Engineering</h3>
-                        <h4>Khulna University</h4>
-                        <div class="time"><i class="far fa-clock"></i> 2015-2019</div>
+                        <h3>{{ $item->degree }}</h3>
+                        <h4>{{ $item->institute }}</h4>
+                        <div class="time"><i class="far fa-clock"></i> {{ $item->time }}</div>
                         <div class="v-line"></div>
                     </div>
-                    <div class="item wow fadeInUp">
-                        <h3>H.S.C. in Science Group</h3>
-                        <h4>Cantonment College, Khulna</h4>
-                        <div class="time"><i class="far fa-clock"></i> 2013-2015</div>
-                        <div class="v-line"></div>
-                    </div>
-                    <div class="item wow fadeInUp">
-                        <h3>S.S.C. in Science Group</h3>
-                        <h4>Cantonment College, Khulna</h4>
-                        <div class="time"><i class="far fa-clock"></i> 2011-2013</div>
-                        <div class="v-line"></div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
             <div class="col-md-6">
-                <h2 class="title"><i class="fas fa-award"></i> Experience</h2>
+                <h2 class="title"><i class="fas fa-award"></i> {{ $page_data->experience_title}}</h2>
                 <div class="inner">
                     <div class="item wow fadeInUp">
                         <h3>ArefinDev IT Solution</h3>
