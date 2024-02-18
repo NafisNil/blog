@@ -9,6 +9,7 @@ use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\AboutController;
 use App\Http\Controllers\Admin\AdminSkillController;
 use App\Http\Controllers\Admin\AdminEducationController;
+use App\Http\Controllers\Admin\AdminExperienceController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -65,3 +66,10 @@ Route::post('/admin/education/submit', [AdminEducationController::class, 'store'
 Route::get('/admin/education/edit/{id}', [AdminEducationController::class, 'edit'])->name('admin_education_edit')->middleware('admin:admin');
 Route::post('/admin/education/update/{id}', [AdminEducationController::class, 'update'])->name('admin_education_update')->middleware('admin:admin');
 Route::get('/admin/education/delete/{id}', [AdminEducationController::class, 'delete'])->name('admin_education_delete')->middleware('admin:admin');
+
+Route::get('/admin/experience/show', [AdminExperienceController::class, 'index'])->name('admin_experience_show')->middleware('admin:admin');
+Route::get('/admin/experience/add', [AdminExperienceController::class, 'add'])->name('admin_experience_add')->middleware('admin:admin');
+Route::post('/admin/experience/submit', [AdminExperienceController::class, 'store'])->name('admin_experience_submit')->middleware('admin:admin');
+Route::get('/admin/experience/edit/{id}', [AdminExperienceController::class, 'edit'])->name('admin_experience_edit')->middleware('admin:admin');
+Route::post('/admin/experience/update/{id}', [AdminExperienceController::class, 'update'])->name('admin_experience_update')->middleware('admin:admin');
+Route::get('/admin/experience/delete/{id}', [AdminExperienceController::class, 'delete'])->name('admin_experience_delete')->middleware('admin:admin');
