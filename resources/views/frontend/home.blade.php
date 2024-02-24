@@ -151,24 +151,15 @@
             <div class="col-md-6">
                 <h2 class="title"><i class="fas fa-award"></i> {{ $page_data->experience_title}}</h2>
                 <div class="inner">
+                    @foreach ($experience as $item)
+
                     <div class="item wow fadeInUp">
-                        <h3>ArefinDev IT Solution</h3>
-                        <h4>Main City Road, Khulna</h4>
-                        <div class="time"><i class="far fa-clock"></i> 2022-Present</div>
+                        <h3>{{ $item->company }}</h3>
+                        <h4>{{ $item->designation }}</h4>
+                        <div class="time"><i class="far fa-clock"></i> {{ $item->time }}</div>
                         <div class="v-line"></div>
                     </div>
-                    <div class="item wow fadeInUp">
-                        <h3>Prime Software Limited</h3>
-                        <h4>55 Main Road, Khulna</h4>
-                        <div class="time"><i class="far fa-clock"></i> 2021-2022</div>
-                        <div class="v-line"></div>
-                    </div>
-                    <div class="item wow fadeInUp">
-                        <h3>ABC Computer Solution</h3>
-                        <h4>34 Street, Khulna</h4>
-                        <div class="time"><i class="far fa-clock"></i> 2019-2021</div>
-                        <div class="v-line"></div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -259,30 +250,30 @@
     </div>
 </div>
 
-
-<div class="home-counter">
+@if ($page_data->counter_status == '1')
+<div class="home-counter" style="background-image:url({{ asset('uploads/'.$page_data->counter_background) }})">
     <div class="container">
         <div class="row counter-items">
             <div class="col-md-3 counter-item">
-                <div class="counter">500</div>
-                <div class="text">Clients</div>
+                <div class="counter">{{ $page_data->counter1_number }}</div>
+                <div class="text">{{ $page_data->counter1_name}}</div>
             </div>
             <div class="col-md-3 counter-item">
-                <div class="counter">200</div>
-                <div class="text">Projects</div>
+                <div class="counter">{{ $page_data->counter2_number }}</div>
+                <div class="text">{{ $page_data->counter2_name }}</div>
             </div>
             <div class="col-md-3 counter-item">
-                <div class="counter">5000</div>
-                <div class="text">Students</div>
+                <div class="counter">{{ $page_data->counter3_number }}</div>
+                <div class="text">{{ $page_data->counter3_name }}</div>
             </div>
             <div class="col-md-3 counter-item">
-                <div class="counter">80</div>
-                <div class="text">Products</div>
+                <div class="counter">{{ $page_data->counter4_number }}</div>
+                <div class="text">{{ $page_data->counter4_name }}</div>
             </div>
         </div>
     </div>
 </div>
-
+@endif
 <div class="portfolio">
     <div class="container">
         <div class="row">
@@ -378,13 +369,13 @@
     </div>
 </div>
 
-
-<div class="home-testimonial">
+@if ($page_data->testimonial_status == '1')
+<div class="home-testimonial" style="background-image:url({{ asset('uploads/'.$page_data->testimonial_background) }})">
     <div class="container">
         <div class="row">
             <div class="col-md-12 heading">
-                <h2>Client Testimonials</h2>
-                <h3>See What My Clients Tell</h3>
+                <h2>{{ @$page_data->testimonial_subtitle  }}</h2>
+                <h3>{{ @$page_data->testimonial_title  }}</h3>
             </div>
             <div class="col-md-12">
                 <div class="owl-carousel owl-theme testimonial-carousel">
@@ -429,7 +420,7 @@
         </div>
     </div>
 </div>
-
+@endif
 <div class="blog">
     <div class="container">
         <div class="row">

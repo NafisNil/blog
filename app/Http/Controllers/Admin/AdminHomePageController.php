@@ -118,4 +118,78 @@ class AdminHomePageController extends Controller
          $page_data->update();
          return redirect()->back()->with('success', 'Data is updated successfully!');
     }
+
+    public function counter(){
+        $page_data = HomePageItem::where('id', 1)->first();
+        return view('admin.home_counter_show', compact('page_data'));
+    }
+
+    public function counter_update(Request $request){
+        $page_data = HomePageItem::where('id', 1)->first();
+        $request->validate([
+            'counter1_number' => 'required' ,
+            'counter1_name' => 'required' ,
+            'counter2_number' => 'required' ,
+            'counter2_name' => 'required' ,
+            'counter3_number' => 'required' ,
+            'counter3_name' => 'required' ,
+            'counter4_number' => 'required' ,
+            'counter4_name' => 'required' ,
+         ]);
+
+         if ($request->hasFile('counter_background')) {
+            # code...
+            $request->validate([
+                'counter_background' => 'image|mimes:jpg,png,jpeg,webp,gif',
+             ]);
+           
+             $ext = $request->file('counter_background')->extension();
+             $final_name = 'home_about'.'.'.$ext;
+             $request->file('counter_background')->move(public_path('uploads/'), $final_name);
+             $page_data->counter_background = $final_name;
+         }
+
+         $page_data->counter1_number = $request->counter1_number;
+         $page_data->counter1_name = $request->counter1_name;
+         $page_data->counter2_number = $request->counter2_number;
+         $page_data->counter2_name = $request->counter2_name;
+         $page_data->counter3_number = $request->counter3_number;
+         $page_data->counter3_name = $request->counter3_name;
+         $page_data->counter4_number = $request->counter4_number;
+         $page_data->counter4_name = $request->counter4_name;
+         $page_data->counter_status = $request->counter_status;
+         $page_data->update();
+         return redirect()->back()->with('success', 'Data is updated successfully!');
+    }
+
+
+
+    public function testimonial(){
+        $page_data = HomePageItem::where('id', 1)->first();
+        return view('admin.home_testimonial_show', compact('page_data'));
+    }
+
+    public function testimonial_update(Request $request){
+        $page_data = HomePageItem::where('id', 1)->first();
+        
+         if ($request->hasFile('testimonial_background')) {
+            # code...
+            $request->validate([
+                'testimonial_background' => 'image|mimes:jpg,png,jpeg,webp,gif',
+             ]);
+           
+             $ext = $request->file('testimonial_background')->extension();
+             $final_name = 'home_about'.'.'.$ext;
+             $request->file('testimonial_background')->move(public_path('uploads/'), $final_name);
+             $page_data->testimonial_background = $final_name;
+         }
+
+         $page_data->testimonial_subtitle = $request->testimonial_subtitle;
+         $page_data->testimonial_title = $request->testimonial_title;
+   
+         $page_data->testimonial_status = $request->testimonial_status;
+         $page_data->update();
+         return redirect()->back()->with('success', 'Data is updated successfully!');
+    }
+
 }

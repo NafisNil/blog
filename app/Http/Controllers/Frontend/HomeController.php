@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\HomePageItem;
 use App\Models\Skill;
 use App\Models\Education;
+use App\Models\Experience;
 class HomeController extends Controller
 {
     //
@@ -15,6 +16,7 @@ class HomeController extends Controller
         $left_skill = Skill::where('side', 'Left')->get();
         $right_skill = Skill::where('side', 'Right')->get();
         $education = Education::orderBy('item_order')->get();
-        return view('frontend.home', compact('page_data', 'left_skill', 'right_skill','education'));
+        $experience = Experience::orderBy('item_order')->get();
+        return view('frontend.home', compact('page_data', 'left_skill', 'right_skill','education','experience'));
     }
 }
