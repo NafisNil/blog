@@ -8,6 +8,7 @@ use App\Models\HomePageItem;
 use App\Models\Skill;
 use App\Models\Education;
 use App\Models\Experience;
+use App\Models\Testimonial;
 class HomeController extends Controller
 {
     //
@@ -17,6 +18,7 @@ class HomeController extends Controller
         $right_skill = Skill::where('side', 'Right')->get();
         $education = Education::orderBy('item_order')->get();
         $experience = Experience::orderBy('item_order')->get();
-        return view('frontend.home', compact('page_data', 'left_skill', 'right_skill','education','experience'));
+        $testimonial = Testimonial::orderBy('id','asc')->get();
+        return view('frontend.home', compact('page_data', 'left_skill', 'right_skill','education','experience', 'testimonial'));
     }
 }
