@@ -33,6 +33,7 @@
             <li class=""><a class="nav-link" href="{{ route('admin_education_show') }}"><i class="fas fa-hand-point-right"></i> <span>Education</span></a></li>
             <li class=""><a class="nav-link" href="{{ route('admin_experience_show') }}"><i class="fas fa-hand-point-right"></i> <span>Experience</span></a></li>
             <li class=""><a class="nav-link" href="{{ route('admin_testimonial_show') }}"><i class="fas fa-hand-point-right"></i> <span>Testimonial</span></a></li>
+            <li class=""><a class="nav-link" href="{{ route('admin_client_show') }}"><i class="fas fa-hand-point-right"></i> <span>Client</span></a></li>
             <li class=""><a class="nav-link" href="invoice.html"><i class="fas fa-hand-point-right"></i> <span>Invoice</span></a></li>
 
         </ul>

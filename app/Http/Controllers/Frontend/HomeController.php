@@ -9,6 +9,7 @@ use App\Models\Skill;
 use App\Models\Education;
 use App\Models\Experience;
 use App\Models\Testimonial;
+use App\Models\Client;
 class HomeController extends Controller
 {
     //
@@ -19,6 +20,7 @@ class HomeController extends Controller
         $education = Education::orderBy('item_order')->get();
         $experience = Experience::orderBy('item_order')->get();
         $testimonial = Testimonial::orderBy('id','asc')->get();
+        $client = Client::orderBy('id','asc')->get();
         return view('frontend.home', compact('page_data', 'left_skill', 'right_skill','education','experience', 'testimonial'));
     }
 }
