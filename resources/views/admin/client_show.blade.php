@@ -36,8 +36,8 @@
                                 <td><img src="{{ asset('uploads/'. $item->photo) }}" alt="" class="w_50"></td>
                                 <td> <a href="{{ $item->url }}">{{ $item->url }}</a> </td>
                                 <td class="pt_10 pb_10">
-                                    <a href="{{ route('admin_testimonial_edit', $item->id) }}" class="btn btn-info" >Edit</a>
-                                    <a href="{{ route('admin_testimonial_delete', $item->id) }}" class="btn btn-danger" onClick="return confirm('Are you sure?');">Delete</a>
+                                    <a href="{{ route('admin_client_edit', $item->id) }}" class="btn btn-info" >Edit</a>
+                                    <a href="{{ route('admin_client_delete', $item->id) }}" class="btn btn-danger" onClick="return confirm('Are you sure?');">Delete</a>
                                 </td>
                                     
                                 

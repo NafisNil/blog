@@ -470,42 +470,18 @@
             </div>
             <div class="col-md-12">
                 <div class="owl-carousel owl-theme client-carousel">
+                    @foreach ($client as $item)
                     <div class="item">
-                        <img src="{{ asset('dist_frontend') }}/images/client.png" alt="">
+                        @if ($item->url != '')
+                             <a href="{{ $item->url }}"> <img src="{{ asset('uploads/'. $item->photo) }}" alt=""></a>
+                        @else
+                                <img src="{{ asset('uploads/'. $item->photo) }}" alt="">
+                        @endif
+                         
                     </div>
-                    <div class="item">
-                        <img src="{{ asset('dist_frontend') }}/images/client.png" alt="">
-                    </div>
-                    <div class="item">
-                        <img src="{{ asset('dist_frontend') }}/images/client.png" alt="">
-                    </div>
-                    <div class="item">
-                        <img src="{{ asset('dist_frontend') }}/images/client.png" alt="">
-                    </div>
-                    <div class="item">
-                        <img src="{{ asset('dist_frontend') }}/images/client.png" alt="">
-                    </div>
-                    <div class="item">
-                        <img src="{{ asset('dist_frontend') }}/images/client.png" alt="">
-                    </div>
-                    <div class="item">
-                        <img src="{{ asset('dist_frontend') }}/images/client.png" alt="">
-                    </div>
-                    <div class="item">
-                        <img src="{{ asset('dist_frontend') }}/images/client.png" alt="">
-                    </div>
-                    <div class="item">
-                        <img src="{{ asset('dist_frontend') }}/images/client.png" alt="">
-                    </div>
-                    <div class="item">
-                        <img src="{{ asset('dist_frontend') }}/images/client.png" alt="">
-                    </div>
-                    <div class="item">
-                        <img src="{{ asset('dist_frontend') }}/images/client.png" alt="">
-                    </div>
-                    <div class="item">
-                        <img src="{{ asset('dist_frontend') }}/images/client.png" alt="">
-                    </div>
+                    @endforeach
+                   
+
                 </div>
             </div>
         </div>
