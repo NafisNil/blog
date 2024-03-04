@@ -167,6 +167,7 @@
 </div>
 
 
+@if ($page_data->service_status == '1')
 <div class="service">
     <div class="container">
         <div class="row">
@@ -249,6 +250,7 @@
         </div>
     </div>
 </div>
+@endif
 
 @if ($page_data->counter_status == '1')
 <div class="home-counter" style="background-image:url({{ asset('uploads/'.$page_data->counter_background) }})">

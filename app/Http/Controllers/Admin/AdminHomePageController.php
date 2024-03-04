@@ -210,4 +210,20 @@ class AdminHomePageController extends Controller
     }
 
 
+    public function service(){
+        $page_data = HomePageItem::where('id', 1)->first();
+        return view('admin.home_service_show', compact('page_data'));
+    }
+
+    public function service_update(Request $request){
+        $page_data = HomePageItem::where('id', 1)->first();
+
+         $page_data->service_subtitle = $request->service_subtitle;
+         $page_data->service_title = $request->service_title;
+       
+         $page_data->service_status = $request->service_status;
+         $page_data->update();
+         return redirect()->back()->with('success', 'Data is updated successfully!');
+    }
+
 }
