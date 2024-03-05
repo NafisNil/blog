@@ -10,6 +10,7 @@ use App\Models\Education;
 use App\Models\Experience;
 use App\Models\Testimonial;
 use App\Models\Client;
+use App\Models\Service;
 class HomeController extends Controller
 {
     //
