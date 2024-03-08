@@ -26,6 +26,14 @@
                 </ul>
             </li>
 
+            <li class="nav-item dropdown {{ Request::is('/admin/home-banner') ? 'active':'' }}">
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-hand-point-right"></i><span>Page Items</span></a>
+                <ul class="dropdown-menu">
+                    <li class="{{ Request::is('/admin/page-services') ? 'active':'' }}"><a class="nav-link" href="{{ route('admin_page_services') }}"><i class="fas fa-angle-right"></i> Service Section</a></li>
+                
+                </ul>
+            </li>
+
             <li class=""><a class="nav-link" href="setting.html"><i class="fas fa-hand-point-right"></i> <span>Setting</span></a></li>
 
             <li class=""><a class="nav-link" href="form.html"><i class="fas fa-hand-point-right"></i> <span>Form</span></a></li>

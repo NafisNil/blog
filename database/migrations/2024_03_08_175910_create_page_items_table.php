@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('page_items', function (Blueprint $table) {
             $table->id();
+            $table->text('services_heading');
+            $table->text('services_banner');
             $table->timestamps();
         });
     }
