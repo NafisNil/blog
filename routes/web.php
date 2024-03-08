@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\AboutController;
+use App\Http\Controllers\Frontend\ServiceController;
 use App\Http\Controllers\Admin\AdminSkillController;
 use App\Http\Controllers\Admin\AdminEducationController;
 use App\Http\Controllers\Admin\AdminExperienceController;
@@ -27,6 +28,7 @@ use App\Http\Controllers\Admin\AdminServiceController;
 //frontend
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/about', [AboutController::class, 'index'])->name('about');
+Route::get('/service', [ServiceController::class, 'index'])->name('service');
 //frontend
 //admin route
 Route::get('/admin/home', [AdminHomeController::class, 'index'])->name('admin_home')->middleware('admin:admin');

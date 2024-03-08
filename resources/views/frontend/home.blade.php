@@ -181,13 +181,13 @@
             @endphp
             @foreach ($service as $item)
             @php
-                if (i%3 == 1) {
+                if ($i%3 == 1) {
                     # code...
                     $anim = "fadeInLeft";
-                }elseif (i%3 == 2) {
+                }elseif ($i%3 == 2) {
                     # code...
                     $anim = "fadeInUp";
-                }elseif (i%3 == 0) {
+                }elseif ($i%3 == 0) {
                     # code...
                     $anim = "fadeInRight";
                 }
