@@ -22,6 +22,7 @@ class HomeController extends Controller
         $experience = Experience::orderBy('item_order')->get();
         $testimonial = Testimonial::orderBy('id','asc')->get();
         $client = Client::orderBy('id','asc')->get();
-        return view('frontend.home', compact('page_data', 'left_skill', 'right_skill','education','experience', 'testimonial','client'));
+        $service = Service::orderBy('item_order','asc')->get();
+        return view('frontend.home', compact('page_data', 'left_skill', 'right_skill','education','experience', 'testimonial','client','service'));
     }
 }
