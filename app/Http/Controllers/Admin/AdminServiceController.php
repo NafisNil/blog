@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\PageItem;
 use App\Models\Service;
+use Illuminate\Support\Str;
 class AdminServiceController extends Controller
 {
     //
@@ -41,6 +43,7 @@ class AdminServiceController extends Controller
          $obj->banner = $final_name1;
 
          $obj->name = $request->name;
+         $obj->slug  =Str::slug($request->name);
          $obj->short_description = $request->short_description;
          $obj->description = $request->description;
          $obj->icon = $request->icon;
@@ -103,6 +106,7 @@ class AdminServiceController extends Controller
 
        
          $obj->name = $request->name;
+         $obj->slug  =Str::slug($request->name);
          $obj->short_description = $request->short_description;
          $obj->description = $request->description;
          $obj->icon = $request->icon;

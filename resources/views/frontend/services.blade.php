@@ -3,11 +3,11 @@
 @section('content')
 
 
-<div class="page-banner" style="background-image: url({{ asset('dist_frontend/images/page-banner.jpg') }});">
+<div class="page-banner" style="background-image: url({{ asset('uploads/'.$page_data->services_banner) }});">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Services</h1>
+                <h1>{{ $page_data->services_heading }}</h1>
             </div>
         </div>
     </div>
@@ -35,6 +35,18 @@
 
             $i++;
         @endphp
+                    <div class="col-lg-4 col-md-6 wow {{ $anim }}">
+                        <div class="item">
+                            <div class="icon"><i class="{{ $item->icon }}"></i></div>
+                            <h3>{{ $item->name }}</h3>
+                            <p>
+                                {!! nl2br($item->short_description) !!}
+                            </p>
+                            <div class="button">
+                                <a href="service-detail.html" class="btn btn-primary">Read More</a>
+                            </div>
+                        </div>
+                    </div>
         @endforeach
         </div>
     </div>
