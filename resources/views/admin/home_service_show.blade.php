@@ -23,6 +23,10 @@
                                     <input type="text" class="form-control" name="service_subtitle" value="{{ @$page_data->service_subtitle }}">
                                 </div>
                                 <div class="mb-4">
+                                    <label class="form-label">Total Items</label>
+                                    <input type="number" class="form-control" name="service_total" value="{{ @$page_data->service_total }}" min="1">
+                                </div>
+                                <div class="mb-4">
                                     <label class="form-label">About Status</label>
                                     <select name="service_status" id="" class="form-control">
                                         <option value="1" @if ($page_data->service_status == '1')

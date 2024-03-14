@@ -16,7 +16,9 @@ class ServiceController extends Controller
         return view('frontend.services', compact('service','page_data'));
     }
 
-    public function detail(){
-        
+    public function detail($slug){
+        $service = Service::orderBy('item_order','asc')->get();
+        $service_detail = Service::where('slug', $slug)->first();
+        return view('frontend.service_detail', compact('service_detail', 'service'));
     }
 }

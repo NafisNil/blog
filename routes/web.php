@@ -30,6 +30,7 @@ use App\Http\Controllers\Admin\AdminPageController;
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/about', [AboutController::class, 'index'])->name('about');
 Route::get('/service', [ServiceController::class, 'index'])->name('service');
+Route::get('/service/{slug}', [ServiceController::class, 'detail'])->name('service_detail');
 //frontend
 //admin route
 Route::get('/admin/home', [AdminHomeController::class, 'index'])->name('admin_home')->middleware('admin:admin');

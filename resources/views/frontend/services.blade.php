@@ -43,12 +43,13 @@
                                 {!! nl2br($item->short_description) !!}
                             </p>
                             <div class="button">
-                                <a href="service-detail.html" class="btn btn-primary">Read More</a>
+                                <a href="{{ route('service_detail', $item->slug) }}" class="btn btn-primary">Read More</a>
                             </div>
                         </div>
                     </div>
         @endforeach
         </div>
+
     </div>
 </div>
 @endsection
