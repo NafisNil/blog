@@ -118,3 +118,15 @@ Route::get('/admin/service/delete/{id}', [AdminServiceController::class, 'delete
 
 Route::get('/admin/page-services', [AdminPageController::class, 'services'])->name('admin_page_services')->middleware('admin:admin');
 Route::post('/admin/page-services-update', [AdminPageController::class, 'services_update'])->name('admin_page_services_update')->middleware('admin:admin');
+
+
+Route::get('/admin/home-portfolio', [AdminHomePageController::class, 'portfolio'])->name('admin_home_portfolio')->middleware('admin:admin');
+Route::post('/admin/home-portfolio-update', [AdminHomePageController::class, 'portfolio_update'])->name('admin_home_portfolio_update')->middleware('admin:admin');
+
+
+Route::get('/admin/portfolio/show', [AdminPortfolioCategoryController::class, 'index'])->name('admin_portfolio_show')->middleware('admin:admin');
+Route::get('/admin/portfolio/add', [AdminPortfolioCategoryController::class, 'add'])->name('admin_portfolio_add')->middleware('admin:admin');
+Route::post('/admin/portfolio/submit', [AdminPortfolioCategoryController::class, 'store'])->name('admin_portfolio_submit')->middleware('admin:admin');
+Route::get('/admin/portfolio/edit/{id}', [AdminPortfolioCategoryController::class, 'edit'])->name('admin_portfolio_edit')->middleware('admin:admin');
+Route::post('/admin/portfolio/update/{id}', [AdminPortfolioCategoryController::class, 'update'])->name('admin_portfolio_update')->middleware('admin:admin');
+Route::get('/admin/portfolio/delete/{id}', [AdminPortfolioCategoryController::class, 'delete'])->name('admin_portfolio_delete')->middleware('admin:admin');

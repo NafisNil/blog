@@ -23,6 +23,7 @@
                     <li class="{{ Request::is('/admin/home-testimonial') ? 'active':'' }}"><a class="nav-link" href="{{ route('admin_home_testimonial') }}"><i class="fas fa-angle-right"></i> Testimonial Section</a></li>
                     <li class="{{ Request::is('/admin/home-client') ? 'active':'' }}"><a class="nav-link" href="{{ route('admin_home_client') }}"><i class="fas fa-angle-right"></i> Client Section</a></li>
                     <li class="{{ Request::is('/admin/home-service') ? 'active':'' }}"><a class="nav-link" href="{{ route('admin_home_service') }}"><i class="fas fa-angle-right"></i> Service Section</a></li>
+                    <li class="{{ Request::is('/admin/home-portfolio') ? 'active':'' }}"><a class="nav-link" href="{{ route('admin_home_portfolio') }}"><i class="fas fa-angle-right"></i> Portfolio Section</a></li>
                 </ul>
             </li>
 
@@ -44,8 +45,14 @@
             <li class=""><a class="nav-link" href="{{ route('admin_testimonial_show') }}"><i class="fas fa-hand-point-right"></i> <span>Testimonial</span></a></li>
             <li class=""><a class="nav-link" href="{{ route('admin_client_show') }}"><i class="fas fa-hand-point-right"></i> <span>Client</span></a></li>
             <li class=""><a class="nav-link" href="{{ route('admin_service_show') }}"><i class="fas fa-hand-point-right"></i> <span>Services</span></a></li>
-            <li class=""><a class="nav-link" href="invoice.html"><i class="fas fa-hand-point-right"></i> <span>Invoice</span></a></li>
-
+           
+            <li class="nav-item dropdown ">
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-hand-point-right"></i><span>Portfolio</span></a>
+                <ul class="dropdown-menu">
+                    <li class="{{ Request::is('/admin/portfolio-category') ? 'active':'' }}"><a class="nav-link" href="#"><i class="fas fa-angle-right"></i>Category</a></li>
+                    <li class="#"><a class="nav-link" href="#"><i class="fas fa-angle-right"></i>Portfolio</a></li>
+                </ul>
+            </li>
         </ul>
     </aside>
 </div>

@@ -231,4 +231,22 @@ class AdminHomePageController extends Controller
          return redirect()->back()->with('success', 'Data is updated successfully!');
     }
 
+
+    public function portfolio(){
+        $page_data = HomePageItem::where('id', 1)->first();
+        return view('admin.home_portfolio_show', compact('page_data'));
+    }
+
+    public function portfolio_update(Request $request){
+
+        $page_data = HomePageItem::where('id', 1)->first();
+
+         $page_data->portfolio_subtitle = $request->portfolio_subtitle;
+         $page_data->portfolio_title = $request->portfolio_title;
+        
+         $page_data->portfolio_status = $request->portfolio_status;
+         $page_data->update();
+         return redirect()->back()->with('success', 'Data is updated successfully!');
+    }
+
 }
