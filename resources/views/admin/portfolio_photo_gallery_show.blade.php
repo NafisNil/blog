@@ -1,11 +1,11 @@
 @extends('admin.layout.app')
 @section('title')
-    Dashboard - View Portfolio
+    Dashboard - View Portfolio Photo Gallery
 @endsection
 
 @section('rightside_button')
 
-    <a href="{{ route('admin_portfolio_add') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Add New</a>
+    <a href="{{ route('admin_portfolio_show') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Back To Previous </a>
 
 @endsection
 @section('content')
@@ -19,23 +19,18 @@
                             <thead>
                             <tr>
                                 <th>SL</th>
-                                <th> Name</th>
-                                <th> Category</th>
-                                <th>Banner</th>
+                            
                                 <th> Photo</th>
-                                <th> Gallery</th>
+                             
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                                @foreach ($all_data as $item)
+                                @foreach ($photo_gallery_items as $item)
                             <tr>
                                
                                
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $item->name }}</td>
-                                <td>{{ $item->rPortfolioCategory->category_name }}</td>
-                                <td><img src="{{ asset('uploads/'. $item->banner) }}" alt="" class="w_100"></td>
+                          
                                 <td><img src="{{ asset('uploads/'. $item->photo) }}" alt="" class="w_50"></td>
                                 <td>
                                     <a href="{{ route('admin_portfolio_photo_gallery_show') }}" class="btn btn-success btn-sm w-100-p">Photo Gallery</a>
