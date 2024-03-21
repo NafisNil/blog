@@ -141,4 +141,7 @@ Route::post('/admin/portfolio/submit', [AdminPortfolioController::class, 'store'
 Route::get('/admin/portfolio/edit/{id}', [AdminPortfolioController::class, 'edit'])->name('admin_portfolio_edit')->middleware('admin:admin');
 Route::post('/admin/portfolio/update/{id}', [AdminPortfolioController::class, 'update'])->name('admin_portfolio_update')->middleware('admin:admin');
 Route::get('/admin/portfolio/delete/{id}', [AdminPortfolioController::class, 'delete'])->name('admin_portfolio_delete')->middleware('admin:admin');
-Route::get('/admin/portfolio/photo-gallery/show', [AdminPortfolioController::class, 'photo_gallery'])->name('admin_portfolio_photo_gallery_show')->middleware('admin:admin');
+
+Route::get('/admin/portfolio/photo-gallery/{id}', [AdminPortfolioController::class, 'photo_gallery'])->name('admin_portfolio_photo_gallery')->middleware('admin:admin');
+Route::post('/admin/portfolio/photo-gallery/submit', [AdminPortfolioController::class, 'photo_gallery_submit'])->name('admin_portfolio_photo_gallery_submit')->middleware('admin:admin');
+Route::get('/admin/portfolio/photo-gallery/delete/{id}', [AdminPortfolioController::class, 'portfolio_gallery_delete'])->name('admin_portfolio_photo_gallery_delete')->middleware('admin:admin');

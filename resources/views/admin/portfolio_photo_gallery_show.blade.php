@@ -11,9 +11,11 @@
 @section('content')
 <div class="section-body">
     <div class="row">
-        <div class="col-12">
+        <div class="col-8">
+            <h5>All Photos</h5>
             <div class="card">
                 <div class="card-body">
+                    <h4>  Dashboard - View Portfolio Photo Gallery ({{ $single_portfolio->name }})</h4>
                     <div class="table-responsive">
                         <table class="table table-bordered" id="example1">
                             <thead>
@@ -30,15 +32,12 @@
                             <tr>
                                
                                
-                          
+                          <td>{{ $loop->iteration }}</td>
                                 <td><img src="{{ asset('uploads/'. $item->photo) }}" alt="" class="w_50"></td>
-                                <td>
-                                    <a href="{{ route('admin_portfolio_photo_gallery_show') }}" class="btn btn-success btn-sm w-100-p">Photo Gallery</a>
-                                    <a href="" class="btn btn-success btn-sm w-100-p">Video Gallery</a>
-                                </td>
+                            
                                 <td class="pt_10 pb_10">
-                                    <a href="{{ route('admin_portfolio_edit', $item->id) }}" class="btn btn-info" >Edit</a>
-                                    <a href="{{ route('admin_portfolio_delete', $item->id) }}" class="btn btn-danger" onClick="return confirm('Are you sure?');">Delete</a>
+                                   
+                                    <a href="{{ route('admin_portfolio_photo_gallery_delete', $item->id) }}" class="btn btn-danger" onClick="return confirm('Are you sure?');">Delete</a>
                                 </td>
                                     
                                 
@@ -47,6 +46,33 @@
                             </tbody>
                         </table>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <h5>Add Photos</h5>
+
+            <div class="card">
+                <div class="card-body">
+                    <form action="{{ route('admin_portfolio_photo_gallery_submit') }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="row">
+        
+                            <div class="col-md-9">
+                                <div class="col-md-12">
+                                    <label class="form-label">Photo *</label>
+                                    <img src="{{ asset('uploads/'.@$page_data->photo) }}" alt="" class="profile-photo w_100_p">
+                                    <input type="file" class="form-control mt_10" name="photo">
+                                </div>
+                                <input type="hidden" name="portfolio_id" value="{{ $single_portfolio->id }}">
+                                <div class="mb-4 mt-5">
+                                    <label class="form-label"></label>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
