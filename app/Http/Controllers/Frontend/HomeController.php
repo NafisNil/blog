@@ -11,6 +11,8 @@ use App\Models\Experience;
 use App\Models\Testimonial;
 use App\Models\Client;
 use App\Models\Service;
+use App\Models\Portfolio;
+use App\Models\PortfolioCategory;
 class HomeController extends Controller
 {
     //
@@ -23,6 +25,8 @@ class HomeController extends Controller
         $testimonial = Testimonial::orderBy('id','asc')->get();
         $client = Client::orderBy('id','asc')->get();
         $service = Service::orderBy('item_order','asc')->take($page_data->service_total)->get();
-        return view('frontend.home', compact('page_data', 'left_skill', 'right_skill','education','experience', 'testimonial','client','service'));
+        $portfolios = Portfolio::orderBy('id', 'desc')->get();
+        $portfolio_categories = PortfolioCategory::orderBy('id', 'desc')->get();
+        return view('frontend.home', compact('page_data', 'left_skill', 'right_skill','education','experience', 'testimonial','client','service','portfolios','portfolio_categories'));
     }
 }

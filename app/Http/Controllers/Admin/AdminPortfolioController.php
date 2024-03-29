@@ -8,7 +8,7 @@ use App\Models\Portfolio;
 use App\Models\PortfolioCategory;
 use Illuminate\Support\Str;
 use App\Models\PortfolioPhoto;
-
+use App\Models\PortfolioVideo;
 class AdminPortfolioController extends Controller
 {
     //
@@ -137,6 +137,24 @@ class AdminPortfolioController extends Controller
         $obj = Portfolio::where('id',$id)->first();
         unlink(public_path('uploads/'.$obj->photo));
         $obj->delete();
+
+        $photos_rows = PortfolioPhoto::where('portfolio_id', $id)->get();
+        foreach ($photos_rows as $key => $value) {
+            # code...
+            unlink(public_path('uploads/'.$value->photo));
+            $item->delete();
+        }
+
+
+
+        $videos_rows = PortfolioVideo::where('portfolio_id', $id)->get();
+        foreach ($videos_rows as $key => $value) {
+            # code...
+            $item->delete();
+        }
+
+
+      
         return redirect()->route('admin_portfolio_show')->with('success', 'Data is deleted successfully!');
     }
 
@@ -170,8 +188,45 @@ class AdminPortfolioController extends Controller
     }
 
 
-    public function portfolio_gallery_delete($id){
+    public function photo_gallery_delete($id){
         $obj = PortfolioPhoto::where('id',$id)->first();
+        $obj->delete();
+        return redirect()->route('admin_portfolio_show')->with('success', 'Data is deleted successfully!');
+    }
+
+
+
+
+
+    public function video_gallery($id){
+        $single_portfolio = Portfolio::where('id', $id)->first();
+        $video_gallery_items = PortfolioVideo::where('portfolio_id', $id)->get();
+        return view('admin.portfolio_video_gallery_show', compact('video_gallery_items', 'single_portfolio'));
+    }
+
+    public function video_gallery_submit(Request $request){
+        $request->validate([
+           
+            'caption' => 'required',
+            'video_id' => 'required'
+         ]);
+
+         $obj = new PortfolioVideo();
+
+         $obj->video_id = $request->video_id;
+         $obj->caption = $request->caption;
+        
+
+         $obj->portfolio_id = $request->portfolio_id;
+        
+
+         $obj->save();
+         return redirect()->back()->with('success', 'Data is inserted successfully!');
+    }
+
+
+    public function video_gallery_delete($id){
+        $obj = PortfolioVideo::where('id',$id)->first();
         $obj->delete();
         return redirect()->route('admin_portfolio_show')->with('success', 'Data is deleted successfully!');
     }

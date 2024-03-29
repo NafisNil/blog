@@ -5,11 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Personal Portfolio Website</title>
+    <title>@yield('seo_title')</title>
     @include('frontend.layout.styles')
 
     <link rel="icon" type="image/png" href="{{ asset('dist_frontend') }}/images/man.png">
-
+    <meta name="description" value="@yield('seo_meta_description')">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 </head>

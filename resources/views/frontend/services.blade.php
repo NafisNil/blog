@@ -1,5 +1,11 @@
 @extends('frontend.layout.app')
+@section('seo_title')
+    {{ $page_data->seo_title }}
+@endsection
 
+@section('seo_meta_description')
+{{ $page_data->seo_meta_description }}
+@endsection
 @section('content')
 
 

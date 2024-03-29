@@ -24,6 +24,7 @@
                     <li class="{{ Request::is('/admin/home-client') ? 'active':'' }}"><a class="nav-link" href="{{ route('admin_home_client') }}"><i class="fas fa-angle-right"></i> Client Section</a></li>
                     <li class="{{ Request::is('/admin/home-service') ? 'active':'' }}"><a class="nav-link" href="{{ route('admin_home_service') }}"><i class="fas fa-angle-right"></i> Service Section</a></li>
                     <li class="{{ Request::is('/admin/home-portfolio') ? 'active':'' }}"><a class="nav-link" href="{{ route('admin_home_portfolio') }}"><i class="fas fa-angle-right"></i> Portfolio Section</a></li>
+                    <li class="{{ Request::is('/admin/home-seo') ? 'active':'' }}"><a class="nav-link" href="{{ route('admin_home_seo') }}"><i class="fas fa-angle-right"></i> Seo Section</a></li>
                 </ul>
             </li>
 
@@ -31,7 +32,7 @@
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-hand-point-right"></i><span>Page Items</span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ Request::is('/admin/page-services') ? 'active':'' }}"><a class="nav-link" href="{{ route('admin_page_services') }}"><i class="fas fa-angle-right"></i> Service Section</a></li>
-                
+                    <li class="{{ Request::is('/admin/page-portfolio') ? 'active':'' }}"><a class="nav-link" href="{{ route('admin_page_portfolio') }}"><i class="fas fa-angle-right"></i> Portfolio Section</a></li>
                 </ul>
             </li>
 

@@ -39,7 +39,7 @@
                                 <td><img src="{{ asset('uploads/'. $item->photo) }}" alt="" class="w_50"></td>
                                 <td>
                                     <a href="{{ route('admin_portfolio_photo_gallery', $item->id) }}" class="btn btn-success btn-sm w-100-p">Photo Gallery</a>
-                                    <a href="" class="btn btn-success btn-sm w-100-p">Video Gallery</a>
+                                    <a href="{{ route('admin_portfolio_video_gallery', $item->id) }}" class="btn btn-success btn-sm w-100-p">Video Gallery</a>
                                 </td>
                                 <td class="pt_10 pb_10">
                                     <a href="{{ route('admin_portfolio_edit', $item->id) }}" class="btn btn-info" >Edit</a>

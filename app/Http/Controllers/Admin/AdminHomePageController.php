@@ -249,4 +249,19 @@ class AdminHomePageController extends Controller
          return redirect()->back()->with('success', 'Data is updated successfully!');
     }
 
+    public function seo(){
+        $page_data = HomePageItem::where('id', 1)->first();
+        return view('admin.home_seo_show', compact('page_data'));
+    }
+
+    public function seo_update(Request $request){
+        $page_data = HomePageItem::where('id', 1)->first();
+        
+
+         $page_data->seo_title = $request->seo_title;
+         $page_data->seo_meta_description = $request->seo_meta_description;
+
+         $page_data->update();
+         return redirect()->back()->with('success', 'Data is updated successfully!');
+    }
 }
