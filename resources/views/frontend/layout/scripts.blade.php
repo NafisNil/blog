@@ -7,3 +7,4 @@
 <script src="{{ asset('dist_frontend') }}/js/owl.carousel.min.js"></script>
 <script src="{{ asset('dist_frontend') }}/js/wow.min.js"></script>
 <script src="{{ asset('dist_frontend') }}/js/custom.js"></script>
+<script src="{{ asset('dist/js/iziToast.min.js') }}"></script>

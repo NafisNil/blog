@@ -9,6 +9,7 @@ use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\AboutController;
 use App\Http\Controllers\Frontend\ServiceController;
 use App\Http\Controllers\Frontend\PortfolioController;
+use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Admin\AdminSkillController;
 use App\Http\Controllers\Admin\AdminEducationController;
 use App\Http\Controllers\Admin\AdminExperienceController;
@@ -33,6 +34,9 @@ use App\Http\Controllers\Admin\AdminPortfolioCategoryController;
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/about', [AboutController::class, 'index'])->name('about');
 Route::get('/service', [ServiceController::class, 'index'])->name('service');
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+Route::post('/contact/send-email', [ContactController::class, 'send_email'])->name('contact_send_email');
 Route::get('/service/{slug}', [ServiceController::class, 'detail'])->name('service_detail');
 Route::get('/portfolio', [PortfolioController::class, 'index'])->name('portfolio');
 Route::get('/portfolio/{slug}', [PortfolioController::class, 'detail'])->name('portfolio_detail');
@@ -161,3 +165,15 @@ Route::post('/admin/page-portfolio-update', [AdminPageController::class, 'portfo
 
 Route::get('/admin/home-seo', [AdminHomePageController::class, 'seo'])->name('admin_home_seo')->middleware('admin:admin');
 Route::post('/admin/home-seo-update', [AdminHomePageController::class, 'seo_update'])->name('admin_home_seo_update')->middleware('admin:admin');
+
+Route::get('/admin/page-about', [AdminPageController::class, 'about'])->name('admin_page_about')->middleware('admin:admin');
+Route::post('/admin/page-about-update', [AdminPageController::class, 'about_update'])->name('admin_page_about_update')->middleware('admin:admin');
+Route::get('/admin/page-about-photo-delete', [AdminPageController::class, 'about_photo_delete'])->name('admin_page_about_photo_delete')->middleware('admin:admin');
+
+Route::get('/admin/page-contact', [AdminPageController::class, 'contact'])->name('admin_page_contact')->middleware('admin:admin');
+Route::post('/admin/page-contact-update', [AdminPageController::class, 'contact_update'])->name('admin_page_contact_update')->middleware('admin:admin');
+
+
+
+Route::get('/admin/home-blog', [AdminHomePageController::class, 'blog'])->name('admin_home_blog')->middleware('admin:admin');
+Route::post('/admin/home-blog-update', [AdminHomePageController::class, 'blog_update'])->name('admin_home_blog_update')->middleware('admin:admin');

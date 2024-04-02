@@ -33,6 +33,8 @@
                 <ul class="dropdown-menu">
                     <li class="{{ Request::is('/admin/page-services') ? 'active':'' }}"><a class="nav-link" href="{{ route('admin_page_services') }}"><i class="fas fa-angle-right"></i> Service Section</a></li>
                     <li class="{{ Request::is('/admin/page-portfolio') ? 'active':'' }}"><a class="nav-link" href="{{ route('admin_page_portfolio') }}"><i class="fas fa-angle-right"></i> Portfolio Section</a></li>
+                    <li class="{{ Request::is('/admin/page-about') ? 'active':'' }}"><a class="nav-link" href="{{ route('admin_page_about') }}"><i class="fas fa-angle-right"></i> About Section</a></li>
+                    <li class="{{ Request::is('/admin/page-contact') ? 'active':'' }}"><a class="nav-link" href="{{ route('admin_page_contact') }}"><i class="fas fa-angle-right"></i> Contact Section</a></li>
                 </ul>
             </li>
 

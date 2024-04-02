@@ -5,3 +5,4 @@
 <link rel="stylesheet" href="{{ asset('dist_frontend') }}/css/owl.theme.default.min.css">
 <link rel="stylesheet" href="{{ asset('dist_frontend') }}/css/animate.css">
 <link rel="stylesheet" href="{{ asset('dist_frontend') }}/css/custom.css">
+<link rel="stylesheet" href="{{ asset('dist/css/iziToast.min.css') }}">

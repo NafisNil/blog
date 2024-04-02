@@ -264,4 +264,22 @@ class AdminHomePageController extends Controller
          $page_data->update();
          return redirect()->back()->with('success', 'Data is updated successfully!');
     }
+
+
+    public function blog(){
+        $page_data = HomePageItem::where('id', 1)->first();
+        return view('admin.home_blog_show', compact('page_data'));
+    }
+
+    public function blog_update(Request $request){
+
+        $page_data = HomePageItem::where('id', 1)->first();
+
+         $page_data->portfolio_subtitle = $request->portfolio_subtitle;
+         $page_data->portfolio_title = $request->portfolio_title;
+        
+         $page_data->portfolio_status = $request->portfolio_status;
+         $page_data->update();
+         return redirect()->back()->with('success', 'Data is updated successfully!');
+    }
 }
