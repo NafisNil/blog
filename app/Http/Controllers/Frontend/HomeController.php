@@ -13,6 +13,7 @@ use App\Models\Client;
 use App\Models\Service;
 use App\Models\Portfolio;
 use App\Models\PortfolioCategory;
+use App\Models\Post;
 class HomeController extends Controller
 {
     //
@@ -26,7 +27,8 @@ class HomeController extends Controller
         $client = Client::orderBy('id','asc')->get();
         $service = Service::orderBy('item_order','asc')->take($page_data->service_total)->get();
         $portfolios = Portfolio::orderBy('id', 'desc')->get();
+        $post = Post::orderBy('id', 'desc')->take(3)->get();
         $portfolio_categories = PortfolioCategory::orderBy('id', 'desc')->get();
-        return view('frontend.home', compact('page_data', 'left_skill', 'right_skill','education','experience', 'testimonial','client','service','portfolios','portfolio_categories'));
+        return view('frontend.home', compact('page_data', 'left_skill', 'right_skill','education','experience', 'testimonial','client','service','portfolios','portfolio_categories','post'));
     }
 }

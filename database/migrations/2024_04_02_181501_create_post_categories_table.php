@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('home_page_items', function (Blueprint $table) {
-            //
-            $table->string('blog_subtitle')->nullable();
-            $table->string('blog_title')->nullable();
-            $table->string('blog_status');
+        Schema::create('post_categories', function (Blueprint $table) {
+            $table->id();
+            $table->string('category_name');
+            $table->string('category_slug');
+            $table->timestamps();
         });
     }
 
@@ -28,8 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('home_page_items', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('post_categories');
     }
 };

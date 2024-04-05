@@ -275,10 +275,10 @@ class AdminHomePageController extends Controller
 
         $page_data = HomePageItem::where('id', 1)->first();
 
-         $page_data->portfolio_subtitle = $request->portfolio_subtitle;
-         $page_data->portfolio_title = $request->portfolio_title;
+         $page_data->blog_subtitle = $request->blog_subtitle;
+         $page_data->blog_title = $request->blog_title;
         
-         $page_data->portfolio_status = $request->portfolio_status;
+         $page_data->blog_status = $request->blog_status;
          $page_data->update();
          return redirect()->back()->with('success', 'Data is updated successfully!');
     }

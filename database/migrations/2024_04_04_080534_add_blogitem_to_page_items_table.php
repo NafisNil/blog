@@ -13,11 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('home_page_items', function (Blueprint $table) {
+        Schema::table('page_items', function (Blueprint $table) {
             //
-            $table->string('blog_subtitle')->nullable();
-            $table->string('blog_title')->nullable();
-            $table->string('blog_status');
+            $table->string('blog_heading');
+            $table->string('blog_banner');
+            $table->string('blog_seo_title')->nullable();
+            $table->string('blog_seo_meta_description')->nullable();
         });
     }
 
@@ -28,7 +29,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('home_page_items', function (Blueprint $table) {
+        Schema::table('page_items', function (Blueprint $table) {
             //
         });
     }

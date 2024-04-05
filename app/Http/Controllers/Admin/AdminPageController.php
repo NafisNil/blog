@@ -167,4 +167,38 @@ class AdminPageController extends Controller
     }
 
 
+    public function blog(){
+        $page_data = PageItem::where('id', 1)->first();
+        return view('admin.page_blog', compact('page_data'));
+    }
+
+    public function blog_update(Request $request){
+        $page_data = PageItem::where('id', 1)->first();
+        $request->validate([
+           
+            'blog_heading' => 'required',
+         ]);
+         if ($request->hasFile('blog_banner')) {
+            # code...
+            $request->validate([
+                'blog_banner' => 'image|mimes:jpg,png,jpeg,webp,gif',
+
+             ]);
+           
+             $ext = $request->file('blog_banner')->extension();
+             $final_name = 'banner_blog_'.time().'.'.$ext;
+             $request->file('blog_banner')->move(public_path('uploads/'), $final_name);
+             $page_data->blog_banner = $final_name;
+         }
+
+         $page_data->blog_heading = $request->blog_heading;
+         $page_data->blog_seo_title = $request->blog_seo_title;
+         $page_data->blog_seo_meta_description = $request->blog_seo_meta_description;
+
+         $page_data->update();
+         return redirect()->back()->with('success', 'Data is updated successfully!');
+    }
+
+
+
 }

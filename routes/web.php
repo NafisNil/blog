@@ -19,6 +19,8 @@ use App\Http\Controllers\Admin\AdminServiceController;
 use App\Http\Controllers\Admin\AdminPageController;
 use App\Http\Controllers\Admin\AdminPortfolioController;
 use App\Http\Controllers\Admin\AdminPortfolioCategoryController;
+use App\Http\Controllers\Admin\AdminPostCategoryController;
+use App\Http\Controllers\Admin\AdminPostController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -177,3 +179,24 @@ Route::post('/admin/page-contact-update', [AdminPageController::class, 'contact_
 
 Route::get('/admin/home-blog', [AdminHomePageController::class, 'blog'])->name('admin_home_blog')->middleware('admin:admin');
 Route::post('/admin/home-blog-update', [AdminHomePageController::class, 'blog_update'])->name('admin_home_blog_update')->middleware('admin:admin');
+
+
+Route::get('/admin/post-category/show', [AdminPostCategoryController::class, 'index'])->name('admin_post_category_show')->middleware('admin:admin');
+Route::get('/admin/post-category/add', [AdminPostCategoryController::class, 'add'])->name('admin_post_category_add')->middleware('admin:admin');
+Route::post('/admin/post-category/submit', [AdminPostCategoryController::class, 'store'])->name('admin_post_category_submit')->middleware('admin:admin');
+Route::get('/admin/post-category/edit/{id}', [AdminPostCategoryController::class, 'edit'])->name('admin_post_category_edit')->middleware('admin:admin');
+Route::post('/admin/post-category/update/{id}', [AdminPostCategoryController::class, 'update'])->name('admin_post_category_update')->middleware('admin:admin');
+Route::get('/admin/post-category/delete/{id}', [AdminPostCategoryController::class, 'delete'])->name('admin_post_category_delete')->middleware('admin:admin');
+
+
+
+Route::get('/admin/post/show', [AdminPostController::class, 'index'])->name('admin_post_show')->middleware('admin:admin');
+Route::get('/admin/post/add', [AdminPostController::class, 'add'])->name('admin_post_add')->middleware('admin:admin');
+Route::post('/admin/post/submit', [AdminPostController::class, 'store'])->name('admin_post_submit')->middleware('admin:admin');
+Route::get('/admin/post/edit/{id}', [AdminPostController::class, 'edit'])->name('admin_post_edit')->middleware('admin:admin');
+Route::post('/admin/post/update/{id}', [AdminPostController::class, 'update'])->name('admin_post_update')->middleware('admin:admin');
+Route::get('/admin/post/delete/{id}', [AdminPostController::class, 'delete'])->name('admin_post_delete')->middleware('admin:admin');
+
+
+Route::get('/admin/page-blog', [AdminPageController::class, 'blog'])->name('admin_page_blog')->middleware('admin:admin');
+Route::post('/admin/page-blog-update', [AdminPageController::class, 'blog_update'])->name('admin_page_blog_update')->middleware('admin:admin');
