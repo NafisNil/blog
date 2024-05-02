@@ -27,6 +27,10 @@ class AdminPostCategoryController extends Controller
          $obj = new PostCategory();
          $obj->category_name = $request->category_name;
          $obj->category_slug  =Str::slug($request->category_name);
+
+
+         $obj->category_seo_title = $request->category_seo_title;
+         $obj->category_seo_meta_description = $request->category_seo_meta_description;
         
          $obj->save();
          return redirect()->route('admin_post_category_show')->with('success', 'Data is inserted successfully!');
@@ -50,7 +54,8 @@ class AdminPostCategoryController extends Controller
        
          $obj->category_name = $request->category_name;
          $obj->category_slug  =Str::slug($request->category_name);
-        
+         $obj->category_seo_title = $request->category_seo_title;
+         $obj->category_seo_meta_description = $request->category_seo_meta_description;
          $obj->update();
          return redirect()->route('admin_post_category_show')->with('success', 'Data is inserted successfully!');
     }

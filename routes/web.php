@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AdminHomePageController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\PostController;
 use App\Http\Controllers\Frontend\AboutController;
 use App\Http\Controllers\Frontend\ServiceController;
 use App\Http\Controllers\Frontend\PortfolioController;
@@ -36,12 +37,18 @@ use App\Http\Controllers\Admin\AdminPostController;
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/about', [AboutController::class, 'index'])->name('about');
 Route::get('/service', [ServiceController::class, 'index'])->name('service');
+Route::get('/blog', [PostController::class, 'index'])->name('blog');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact/send-email', [ContactController::class, 'send_email'])->name('contact_send_email');
 Route::get('/service/{slug}', [ServiceController::class, 'detail'])->name('service_detail');
 Route::get('/portfolio', [PortfolioController::class, 'index'])->name('portfolio');
 Route::get('/portfolio/{slug}', [PortfolioController::class, 'detail'])->name('portfolio_detail');
+Route::get('/post/{slug}', [PostController::class, 'detail'])->name('post');
+Route::get('/category/{slug}', [PostController::class, 'category'])->name('category');
+Route::get('/archive/{month}/{year}', [PostController::class, 'archive'])->name('archive');
+Route::post('/search', [PostController::class, 'search'])->name('search');
+Route::post('/comment-submit', [CommentController::class, 'comment_submit'])->name('comment_submit');
 //frontend
 //admin route
 Route::get('/admin/home', [AdminHomeController::class, 'index'])->name('admin_home')->middleware('admin:admin');
@@ -200,3 +207,12 @@ Route::get('/admin/post/delete/{id}', [AdminPostController::class, 'delete'])->n
 
 Route::get('/admin/page-blog', [AdminPageController::class, 'blog'])->name('admin_page_blog')->middleware('admin:admin');
 Route::post('/admin/page-blog-update', [AdminPageController::class, 'blog_update'])->name('admin_page_blog_update')->middleware('admin:admin');
+
+Route::get('/admin/page-category', [AdminPageController::class, 'category'])->name('admin_page_category')->middleware('admin:admin');
+Route::post('/admin/page-category-update', [AdminPageController::class, 'category_update'])->name('admin_page_category_update')->middleware('admin:admin');
+
+Route::get('/admin/page-archive', [AdminPageController::class, 'archive'])->name('admin_page_archive')->middleware('admin:admin');
+Route::post('/admin/page-archive-update', [AdminPageController::class, 'archive_update'])->name('admin_page_archive_update')->middleware('admin:admin');
+
+Route::get('/admin/page-search', [AdminPageController::class, 'search'])->name('admin_page_search')->middleware('admin:admin');
+Route::post('/admin/page-search-update', [AdminPageController::class, 'search_update'])->name('admin_page_search_update')->middleware('admin:admin');

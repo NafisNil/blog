@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Archive;
 use App\Models\PostCategory;
 use Illuminate\Support\Str;
 
@@ -56,6 +57,28 @@ class AdminPostController extends Controller
          $obj->seo_title = $request->seo_title;
          $obj->seo_meta_description = $request->seo_meta_description;
          $obj->save();
+
+         $current_month  = date('m');
+         $current_year  = date('Y');
+         $total = Archive::where('month', $current_month)->where('year', $current_year)->count();
+
+         if ($total > 0) {
+            # code...
+            $archive_data = Archive::where('month', $current_month)->where('year', $current_year)->first();
+            $total_post = $archive_data->total_post;
+            $total_post++;
+            $archive_data->total_post = $total_post;
+            $archive_data->update();
+         }else{
+            $archive_data = new Archive();
+            $archive_data->month =  $current_month;
+            $archive_data->year =  $current_year;
+            $archive_data->total_post = 1;
+         }
+         $archive_data->save();
+
+
+
          return redirect()->route('admin_post_show')->with('success', 'Data is inserted successfully!');
     }
 
@@ -126,8 +149,18 @@ class AdminPostController extends Controller
 
     public function delete($id){
         $obj = Post::where('id',$id)->first();
+        $current_month  = $obj->created_at->format('m');
+        $current_year  =  $obj->created_at->format('Y');
+
+        
         unlink(public_path('uploads/'.$obj->photo));
         $obj->delete();
+
+        $archive_data = Archive::where('month', $current_month)->where('year', $current_year)->first();
+            $total_post = $archive_data->total_post;
+            $total_post--;
+            $archive_data->total_post = $total_post;
+            $archive_data->update();
 
         return redirect()->route('admin_post_show')->with('success', 'Data is deleted successfully!');
     }

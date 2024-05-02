@@ -199,6 +199,93 @@ class AdminPageController extends Controller
          return redirect()->back()->with('success', 'Data is updated successfully!');
     }
 
+    public function category(){
+        $page_data = PageItem::where('id', 1)->first();
+        return view('admin.page_category', compact('page_data'));
+    }
+
+    public function category_update(Request $request){
+        $page_data = PageItem::where('id', 1)->first();
+      
+         if ($request->hasFile('category_banner')) {
+            # code...
+            $request->validate([
+                'category_banner' => 'image|mimes:jpg,png,jpeg,webp,gif',
+
+             ]);
+           
+             $ext = $request->file('category_banner')->extension();
+             $final_name = 'banner_category_'.time().'.'.$ext;
+             $request->file('category_banner')->move(public_path('uploads/'), $final_name);
+             $page_data->category_banner = $final_name;
+         }
+
+         $page_data->update();
+         return redirect()->back()->with('success', 'Data is updated successfully!');
+    }
 
 
-}
+
+    public function archive(){
+        $page_data = PageItem::where('id', 1)->first();
+        return view('admin.page_archive', compact('page_data'));
+    }
+
+    public function archive_update(Request $request){
+        $page_data = PageItem::where('id', 1)->first();
+      
+         if ($request->hasFile('archive_banner')) {
+            # code...
+            $request->validate([
+                'archive_banner' => 'image|mimes:jpg,png,jpeg,webp,gif',
+
+             ]);
+           
+             $ext = $request->file('archive_banner')->extension();
+             $final_name = 'banner_archive_'.time().'.'.$ext;
+             $request->file('archive_banner')->move(public_path('uploads/'), $final_name);
+             $page_data->archive_banner = $final_name;
+         }
+
+   
+         $page_data->archive_seo_title = $request->archive_seo_title;
+         $page_data->archive_seo_meta_description = $request->archive_seo_meta_description;
+
+         $page_data->update();
+         return redirect()->back()->with('success', 'Data is updated successfully!');
+    }
+
+
+    public function search(){
+        $page_data = PageItem::where('id', 1)->first();
+        return view('admin.page_search', compact('page_data'));
+    }
+
+    public function search_update(Request $request){
+        $page_data = PageItem::where('id', 1)->first();
+      
+        if ($request->hasFile('search_banner')) {
+           # code...
+           $request->validate([
+               'search_banner' => 'image|mimes:jpg,png,jpeg,webp,gif',
+
+            ]);
+          
+            $ext = $request->file('search_banner')->extension();
+            $final_name = 'banner_search_'.time().'.'.$ext;
+            $request->file('search_banner')->move(public_path('uploads/'), $final_name);
+            $page_data->search_banner = $final_name;
+        }
+
+  
+        $page_data->search_seo_title = $request->search_seo_title;
+        $page_data->search_seo_meta_description = $request->search_seo_meta_description;
+
+        $page_data->update();
+        return redirect()->back()->with('success', 'Data is updated successfully!');
+   }
+    }
+
+
+
+

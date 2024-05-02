@@ -37,6 +37,9 @@
                     <li class="{{ Request::is('/admin/page-about') ? 'active':'' }}"><a class="nav-link" href="{{ route('admin_page_about') }}"><i class="fas fa-angle-right"></i> About Section</a></li>
                     <li class="{{ Request::is('/admin/page-contact') ? 'active':'' }}"><a class="nav-link" href="{{ route('admin_page_contact') }}"><i class="fas fa-angle-right"></i> Contact Section</a></li>
                     <li class="{{ Request::is('/admin/page-blog') ? 'active':'' }}"><a class="nav-link" href="{{ route('admin_page_blog') }}"><i class="fas fa-angle-right"></i> Blog Section</a></li>
+                    <li class="{{ Request::is('/admin/page-category') ? 'active':'' }}"><a class="nav-link" href="{{ route('admin_page_category') }}"><i class="fas fa-angle-right"></i> Category Section</a></li>
+                    <li class="{{ Request::is('/admin/page-archive') ? 'active':'' }}"><a class="nav-link" href="{{ route('admin_page_archive') }}"><i class="fas fa-angle-right"></i> Archive Section</a></li>
+                    <li class="{{ Request::is('/admin/page-search') ? 'active':'' }}"><a class="nav-link" href="{{ route('admin_page_search') }}"><i class="fas fa-angle-right"></i> Search Section</a></li>
      
                 </ul>
             </li>

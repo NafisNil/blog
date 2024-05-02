@@ -24,6 +24,17 @@
                                     <label class="form-label">Category Name *</label>
                                     <input type="text" class="form-control" name="category_name" value="{{ $row_data->category_name }}">
                                 </div>
+
+
+                                              
+                                <div class="mb-4">
+                                    <label class="form-label">SEO title </label>
+                                    <input type="text" class="form-control" name="category_seo_title" value="{{ $row_data->category_seo_title }}">
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label">SEO Meta Description </label>
+                                    <textarea name="category_seo_meta_description" id="" cols="30" rows="10" class="form-control h-100">{{ $row_data->category_seo_meta_description }}</textarea>
+                                </div>
                      
                                 <div class="mb-4">
                           
