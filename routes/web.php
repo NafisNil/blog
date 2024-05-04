@@ -205,6 +205,9 @@ Route::get('/admin/post/edit/{id}', [AdminPostController::class, 'edit'])->name(
 Route::post('/admin/post/update/{id}', [AdminPostController::class, 'update'])->name('admin_post_update')->middleware('admin:admin');
 Route::get('/admin/post/delete/{id}', [AdminPostController::class, 'delete'])->name('admin_post_delete')->middleware('admin:admin');
 
+Route::get('/admin/comment/pending', [AdminPostController::class, 'comment_pending'])->name('admin_comment_pending')->middleware('admin:admin');
+Route::get('/admin/comment/make_approved/{id}', [AdminPostController::class, 'comment_make_approved'])->name('admin_comment_make_approve')->middleware('admin:admin');
+Route::get('/admin/comment/delete/{id}', [AdminPostController::class, 'comment_delete'])->name('admin_comment_delete')->middleware('admin:admin');
 
 Route::get('/admin/page-blog', [AdminPageController::class, 'blog'])->name('admin_page_blog')->middleware('admin:admin');
 Route::post('/admin/page-blog-update', [AdminPageController::class, 'blog_update'])->name('admin_page_blog_update')->middleware('admin:admin');

@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Archive;
+use App\Models\Comment;
+use App\Models\Reply;
 use App\Models\PostCategory;
 use Illuminate\Support\Str;
 
@@ -163,6 +165,29 @@ class AdminPostController extends Controller
             $archive_data->update();
 
         return redirect()->route('admin_post_show')->with('success', 'Data is deleted successfully!');
+    }
+
+
+    public function comment_pending(){
+        $pending_comment = Comment::with('rPost')->where('status', 0)->get();
+        return view('admin.comment_pending', compact('pending_comment'));
+    }
+
+
+    public function comment_make_approved($id){
+        $obj = Comment::where('id',$id)->first();
+       $obj->status = 1;
+        $obj->delete();
+
+        return redirect()->back()->with('success', 'Comment is approved successfully!');
+    }
+
+    public function comment_delete($id){
+        $obj = Comment::where('id',$id)->first();
+       
+        $obj->delete();
+
+        return redirect()->back()->with('success', 'Data is deleted successfully!');
     }
 
 

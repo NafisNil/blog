@@ -60,6 +60,7 @@
                 <ul class="dropdown-menu">
                     <li class="{{ Request::is('/admin/portfolio-category') ? 'active':'' }}"><a class="nav-link" href="{{ route('admin_portfolio_category_show') }}"><i class="fas fa-angle-right"></i>Category</a></li>
                     <li class="{{ Request::is('/admin/portfolio') ? 'active':'' }}"><a class="nav-link" href="{{ route('admin_portfolio_show') }}"><i class="fas fa-angle-right"></i>Portfolio</a></li>
+                   
                 </ul>
             </li>
 
@@ -68,6 +69,7 @@
                 <ul class="dropdown-menu">
                     <li class="{{ Request::is('/admin/post-category') ? 'active':'' }}"><a class="nav-link" href="{{ route('admin_post_category_show') }}"><i class="fas fa-angle-right"></i>Category</a></li>
                     <li class="{{ Request::is('/admin/post') ? 'active':'' }}"><a class="nav-link" href="{{ route('admin_post_show') }}"><i class="fas fa-angle-right"></i>Post</a></li>
+                    <li class="{{ Request::is('/admin/comment/*') ? 'active':'' }}"><a class="nav-link" href="{{ route('admin_comment_pending') }}"><i class="fas fa-angle-right"></i>Pending Comments</a></li>
                 </ul>
             </li>
         </ul>
