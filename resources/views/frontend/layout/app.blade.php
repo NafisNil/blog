@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>@yield('seo_title')</title>
+    @yield('open_graph_data')
     @include('frontend.layout.styles')
 
     <link rel="icon" type="image/png" href="{{ asset('dist_frontend') }}/images/man.png">

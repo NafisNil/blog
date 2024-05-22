@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Archive;
+use App\Models\Comment;
 use App\Models\PostCategory;
 use App\Models\PageItem;
+use Illuminate\Support\Facades\Route;
 class PostController extends Controller
 {
     //
@@ -23,7 +25,9 @@ class PostController extends Controller
         $post_categories = PostCategory::orderBy('category_name','asc')->get();
         $post_detail = Post::with('rPostCategory')->where('slug', $slug)->first();
         $archives = Archive::orderBy('id','desc')->get();
-        return view('frontend.post_detail', compact('post_detail', 'post','post_categories','archives'));
+        $comments = Comment::with('rReply')->where('status', 1)->get();
+        $commentsCount = Comment::where('post_id', $post_detail->id)->where('status', 1)->count();
+        return view('frontend.post_detail', compact('post_detail', 'post','post_categories','archives', 'comments', 'commentsCount'));
     }
 
     public function category($slug){

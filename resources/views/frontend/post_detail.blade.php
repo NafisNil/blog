@@ -8,6 +8,14 @@
 @endsection
 @section('content')
 
+@section('open_graph_data')
+<meta property="og:title" content="{{ $post_detail->title }}" />
+<meta property="og:description" 
+  content="{{ $post_detail->short_description }}" />
+<meta property="og:url" content="{{ Route::getCurrentRoute()->getActionName() }}" />
+<meta property="og:image" content="{{ asset('uploads/'. $post_detail->photo) }}" />
+@endsection
+
 <div class="page-banner" style="background-image: url({{ asset('uploads/'.$post_detail->banner) }});">
     <div class="container">
         <div class="row">
@@ -17,6 +25,7 @@
         </div>
     </div>
 </div>
+
 
 
 <div class="page-content blog-detail">
@@ -35,103 +44,113 @@
                 </div>
                 <div class="text">
                    {!! nl2br($post_detail->description) !!}
+                   {{ @Auth::guard('admin')->user()->name }}
+               
                 </div>
-                
+                <br>
                 <div class="share">
                     <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=633263d3bfbc4500128cca2f&product=inline-share-buttons" async="async"></script>
                     <div class="sharethis-inline-share-buttons"></div>
                 </div>
-
+                <br>
+                @if (session()->has('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session()->get('success') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
                 @if ($post_detail->show_comment == '1')
                 <div class="comment">
 
-                    <h2>6 Comments</h2>
-
+                    <h2>{{ $commentsCount }} Comments</h2>
+                    @foreach ($comments as $item)
                     <div class="comment-section">
 
                         <div class="comment-box d-flex justify-content-start">
                             <div class="left">
-                                <img src="images/t1.jpg" alt="">
+                                <img src="https://gravatar.com/avatar/27205e5c51cb03f862138b22bcb5dc20f94a342e744ff6df1b8dc8af3c865109" alt="">
                             </div>
                             <div class="right">
-                                <div class="name">Patrick Smith</div>
-                                <div class="date">September 25, 2022</div>
+                                <div class="name">{{ $item->person_name }}</div>
+                                <div class="date">{{ $item->created_at->format('d M, Y') }}</div>
                                 <div class="text">
-                                    Qui ea oporteat democritum, ad sed minimum offendit expetendis. Idque volumus platonem eos ut, in est verear delectus. Vel ut option adipisci consequuntur. Mei et solum malis detracto, has iuvaret invenire inciderint no. Id est dico nostrud invenire.
+                                    {!! nl2br($item->person_comment) !!}
                                 </div>
                                 <div class="reply">
-                                    <a href=""><i class="fas fa-reply"></i> Reply</a>
+                                    <a href="" data-toggle="modal" data-target="#exampleModal{{ $item->id }}"><i class="fas fa-reply"></i> Reply</a>
                                 </div>
                             </div>
                         </div>
+
+                        @foreach ($item->rReply as $value)
 
                         <div class="comment-box reply-box d-flex justify-content-start">
                             <div class="left">
-                                <img src="images/t2.jpg" alt="">
+                                <img src="https://gravatar.com/avatar/27205e5c51cb03f862138b22bcb5dc20f94a342e744ff6df1b8dc8af3c865109?f=y" alt="">
                             </div>
                             <div class="right">
-                                <div class="name">John Doe</div>
-                                <div class="date">September 25, 2022</div>
+                                <div class="name">{{ $value->person_name }}</div>
+                                <div class="date">{{ $value->created_at->format('d M, Y') }}</div>
                                 <div class="text">
-                                    Qui ea oporteat democritum, ad sed minimum offendit expetendis. Idque volumus platonem eos ut, in est verear delectus. Vel ut option adipisci consequuntur. Mei et solum malis detracto, has iuvaret invenire inciderint no. Id est dico nostrud invenire.
-                                </div>
-                               
-                            </div>
-                        </div>
-
-                        <div class="comment-box reply-box d-flex justify-content-start">
-                            <div class="left">
-                                <img src="images/t3.jpg" alt="">
-                            </div>
-                            <div class="right">
-                                <div class="name">Brent Smith</div>
-                                <div class="date">September 25, 2022</div>
-                                <div class="text">
-                                    Qui ea oporteat democritum, ad sed minimum offendit expetendis. Idque volumus platonem eos ut, in est verear delectus. Vel ut option adipisci consequuntur. Mei et solum malis detracto, has iuvaret invenire inciderint no. Id est dico nostrud invenire.
-                                </div>
-                               
-                            </div>
-                        </div>
-
-                    </div>
-
-
-                    <div class="comment-section">
-                        <div class="comment-box d-flex justify-content-start">
-                            <div class="left">
-                                <img src="images/t2.jpg" alt="">
-                            </div>
-                            <div class="right">
-                                <div class="name">John Doe</div>
-                                <div class="date">September 25, 2022</div>
-                                <div class="text">
-                                    Qui ea oporteat democritum, ad sed minimum offendit expetendis. Idque volumus platonem eos ut, in est verear delectus. Vel ut option adipisci consequuntur. Mei et solum malis detracto, has iuvaret invenire inciderint no. Id est dico nostrud invenire.
+                                    {!! nl2br($value->person_comment) !!}
                                 </div>
                                 <div class="reply">
                                     <a href=""><i class="fas fa-reply"></i> Reply</a>
                                 </div>
                             </div>
                         </div>
+                                                    
+                        @endforeach
+
+
                     </div>
 
-                    <div class="comment-section">
-                        <div class="comment-box d-flex justify-content-start">
-                            <div class="left">
-                                <img src="images/t3.jpg" alt="">
-                            </div>
-                            <div class="right">
-                                <div class="name">John Doe</div>
-                                <div class="date">September 25, 2022</div>
-                                <div class="text">
-                                    Qui ea oporteat democritum, ad sed minimum offendit expetendis. Idque volumus platonem eos ut, in est verear delectus. Vel ut option adipisci consequuntur. Mei et solum malis detracto, has iuvaret invenire inciderint no. Id est dico nostrud invenire.
-                                </div>
-                                <div class="reply">
-                                    <a href=""><i class="fas fa-reply"></i> Reply</a>
-                                </div>
-                            </div>
+
+                   <!-- Button trigger modal -->
+
+                
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Reply Here</h5>
+                        <button type="button" class="close bg-secondary" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                         </div>
+                        <div class="modal-body">
+                            <form action="{{ route('reply_submit') }}" method="post">
+                                @csrf
+                                <input type="hidden" name="post_id" value="{{ $post_detail->id }}">
+                                <input type="hidden" name="comment_id" value="{{ $item->id }}">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <input type="text" class="form-control" placeholder="Name" name="name">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <input type="text" class="form-control" placeholder="Email Address" name="email">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <textarea class="form-control" rows="3" placeholder="Comment" name="comment"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+              
                     </div>
-
+                    </div>
+                </div>
+                    @endforeach
 
                     <div class="mt_40"></div>
 

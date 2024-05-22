@@ -12,6 +12,8 @@
 
             <li class="{{ Request::is('/admin/home') ? 'active':'' }}"><a class="nav-link" href="{{ route('admin_home') }}"><i class="fas fa-hand-point-right"></i> <span>Dashboard</span></a></li>
 
+            <li class="{{ Request::is('/admin/setting') ? 'active':'' }}"><a class="nav-link" href="{{ route('admin_setting') }}"><i class="fas fa-hand-point-right"></i> <span>Setting</span></a></li>
+
             <li class="nav-item dropdown {{ Request::is('/admin/home-banner') ? 'active':'' }}">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-hand-point-right"></i><span>Home Page</span></a>
                 <ul class="dropdown-menu">
@@ -69,7 +71,10 @@
                 <ul class="dropdown-menu">
                     <li class="{{ Request::is('/admin/post-category') ? 'active':'' }}"><a class="nav-link" href="{{ route('admin_post_category_show') }}"><i class="fas fa-angle-right"></i>Category</a></li>
                     <li class="{{ Request::is('/admin/post') ? 'active':'' }}"><a class="nav-link" href="{{ route('admin_post_show') }}"><i class="fas fa-angle-right"></i>Post</a></li>
-                    <li class="{{ Request::is('/admin/comment/*') ? 'active':'' }}"><a class="nav-link" href="{{ route('admin_comment_pending') }}"><i class="fas fa-angle-right"></i>Pending Comments</a></li>
+                    <li class="{{ Request::is('/admin/comment/pending') ? 'active':'' }}"><a class="nav-link" href="{{ route('admin_comment_pending') }}"><i class="fas fa-angle-right"></i>Pending Comments</a></li>
+                    <li class="{{ Request::is('/admin/comment/approved') ? 'active':'' }}"><a class="nav-link" href="{{ route('admin_comment_approved') }}"><i class="fas fa-angle-right"></i>Approved Comments</a></li>
+                    <li class="{{ Request::is('/admin/reply/pending') ? 'active':'' }}"><a class="nav-link" href="{{ route('admin_reply_pending') }}"><i class="fas fa-angle-right"></i>Pending Reply</a></li>
+                    <li class="{{ Request::is('/admin/reply/approved') ? 'active':'' }}"><a class="nav-link" href="{{ route('admin_reply_approved') }}"><i class="fas fa-angle-right"></i>Approved Reply</a></li>
                 </ul>
             </li>
         </ul>

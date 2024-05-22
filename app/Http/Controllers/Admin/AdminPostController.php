@@ -174,12 +174,26 @@ class AdminPostController extends Controller
     }
 
 
+    public function comment_approved(){
+        $approved_comment = Comment::with('rPost')->where('status', 1)->get();
+        return view('admin.comment_approved', compact('approved_comment'));
+    }
+
+
     public function comment_make_approved($id){
         $obj = Comment::where('id',$id)->first();
        $obj->status = 1;
-        $obj->delete();
+        $obj->update();
 
         return redirect()->back()->with('success', 'Comment is approved successfully!');
+    }
+
+    public function comment_make_pending($id){
+        $obj = Comment::where('id',$id)->first();
+       $obj->status = 0;
+        $obj->update();
+
+        return redirect()->back()->with('success', 'Comment is pending successfully!');
     }
 
     public function comment_delete($id){
@@ -190,6 +204,44 @@ class AdminPostController extends Controller
         return redirect()->back()->with('success', 'Data is deleted successfully!');
     }
 
+
+
+
+    public function reply_pending(){
+        $pending_reply = Reply::with('rPost')->where('status', 0)->get();
+        return view('admin.reply_pending', compact('pending_reply'));
+    }
+
+
+    public function reply_approved(){
+        $approved_reply = Reply::with('rPost')->where('status', 1)->get();
+        return view('admin.reply_approved', compact('approved_reply'));
+    }
+
+
+    public function reply_make_approved($id){
+        $obj = Reply::where('id',$id)->first();
+       $obj->status = 1;
+        $obj->update();
+
+        return redirect()->back()->with('success', 'Reply is approved successfully!');
+    }
+
+    public function reply_make_pending($id){
+        $obj = Reply::where('id',$id)->first();
+       $obj->status = 0;
+        $obj->update();
+
+        return redirect()->back()->with('success', 'Reply is pending successfully!');
+    }
+
+    public function reply_delete($id){
+        $obj = Reply::where('id',$id)->first();
+       
+        $obj->delete();
+
+        return redirect()->back()->with('success', 'Data is deleted successfully!');
+    }
 
 
 }
