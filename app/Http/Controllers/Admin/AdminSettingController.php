@@ -15,7 +15,7 @@ class AdminSettingController extends Controller
 
     public function update(Request $request){
         $request->validate([
-            'footer_copyright' => 'required',
+            'footer_copyright_text' => 'required',
             'theme_color' => 'required',
           
          ]);
@@ -70,6 +70,22 @@ class AdminSettingController extends Controller
            //  dd($final_name);
              $obj->logo_footer = $final_name;
          }
+
+
+         $obj->footer_text = $request->footer_text;
+         $obj->footer_icon_1 = $request->footer_icon_1;
+         $obj->footer_icon_1_url = $request->footer_icon_1_url;
+         $obj->footer_icon_2 = $request->footer_icon_2;
+         $obj->footer_icon_2_url = $request->footer_icon_2_url;
+         $obj->footer_icon_3 = $request->footer_icon_3;
+         $obj->footer_icon_3_url = $request->footer_icon_3_url;
+         $obj->footer_icon_4 = $request->footer_icon_4;
+         $obj->footer_icon_4_url = $request->footer_icon_4_url;
+         $obj->footer_copyright_text = $request->footer_copyright_text;
+         $obj->preloader_status = $request->preloader_status;
+         $obj->theme_color = $request->theme_color;
+         $obj->update();
+         return redirect()->back()->with('success', 'Data is updated successfully!');
 
 
     }

@@ -21,8 +21,8 @@
                             <div class="col-md-9">
                                 <div class="col-md-3">
                                     <label class="form-label">Photo *</label>
-                                    <img src="{{ asset('uploads/'.@$setting_data->photo) }}" alt="" class="profile-photo w_100_p">
-                                    <input type="file" class="form-control mt_10" name="photo">
+                                    <img src="{{ asset('uploads/'.@$setting_data->logo) }}" alt="" class="profile-photo w_100_p">
+                                    <input type="file" class="form-control mt_10" name="logo">
                                 </div>
 
                                 <div class="col-md-3">
@@ -48,7 +48,7 @@
 
                                 <div class="mb-4">
                                     <label class="form-label">Footer Icon 1 URL* </label>
-                                    <input type="text" class="form-control" name="footer_icon_1_url" value="{{ $setting_data->footer_icon_1_url }}">
+                                    <input type="url" class="form-control" name="footer_icon_1_url" value="{{ $setting_data->footer_icon_1_url }}">
                                 </div>
 
                                 <div class="mb-4">
@@ -58,7 +58,7 @@
 
                                 <div class="mb-4">
                                     <label class="form-label">Footer Icon 2 URL* </label>
-                                    <input type="text" class="form-control" name="footer_icon_2_url" value="{{ $setting_data->footer_icon_2_url }}">
+                                    <input type="url" class="form-control" name="footer_icon_2_url" value="{{ $setting_data->footer_icon_2_url }}">
                                 </div>
 
 
@@ -70,7 +70,7 @@
 
                                 <div class="mb-4">
                                     <label class="form-label">Footer Icon 3 URL* </label>
-                                    <input type="text" class="form-control" name="footer_icon_3_url" value="{{ $setting_data->footer_icon_3_url }}">
+                                    <input type="url" class="form-control" name="footer_icon_3_url" value="{{ $setting_data->footer_icon_3_url }}">
                                 </div>
 
 
@@ -81,18 +81,18 @@
 
                                 <div class="mb-4">
                                     <label class="form-label">Footer Icon 4 URL* </label>
-                                    <input type="text" class="form-control" name="footer_icon_4_url" value="{{ $setting_data->footer_icon_4_url }}">
+                                    <input type="url" class="form-control" name="footer_icon_4_url" value="{{ $setting_data->footer_icon_4_url }}">
                                 </div>
 
 
                                 <div class="mb-4">
                                     <label class="form-label">Footer Copyright</label>
-                                    <input type="text" class="form-control" name="footer_copyright" value="{{ $setting_data->footer_copyright }}">
+                                    <input type="text" class="form-control" name="footer_copyright_text" value="{{ $setting_data->footer_copyright_text }}">
                                 </div>
 
                                 <div class="mb-4">
                                     <label class="form-label">Preloader Status</label>
-                                    <select name="side" class="form-control">
+                                    <select name="preloader_status" class="form-control">
                                         <option value="Show"  @if ($setting_data->side == "Show"):'selected':''
                                         @endif>Show</option>
                                         <option value="Hide" @if ($setting_data->side == "Hide"):'selected':''
@@ -103,7 +103,7 @@
 
                                 <div class="mb-4">
                                     <label class="form-label">Color</label>
-                                    <input type="color" class="form-control" name="color" value="{{ $setting_data->color }}">
+                                    <input type="color" class="form-control" name="theme_color" value="{{ $setting_data->theme_color }}">
                                 </div>
     
                                 <div class="mb-4">
