@@ -39,7 +39,7 @@
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-label">Footer Text *</label>
-                                    <textarea name="footer _text" class="form-control h_100" id="" cols="30" rows="10">{{ $setting_data->footer_text }}</textarea>
+                                    <textarea name="footer_text" class="form-control h_100" id="" cols="30" rows="10">{{ $setting_data->footer_text }}</textarea>
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-label">Footer Icon 1 * </label>
