@@ -17,14 +17,44 @@
         nav .nav-item .nav-link:hover,
         .home-banner .left .button a,
         .home-about .right h3,
-        .home-about .contact-info i{
+        .home-about .contact-info i,
+        .home-skill .heading h2,
+        .home-qualification .heading h2,
+        .home-qualification h2.title,
+        .service .heading h2,
+        .service .item .icon i,
+        .portfolio .heading h2,
+        .portfolio .filter ul li,
+        .home-testimonial .heading h2,
+        .home-qualification .item:before,
+        .blog .heading h2,
+        .home-client .heading h2,
+        .footer .social ul li:hover a,
+        .sidebar .widget h2,
+        .sidebar .widget ul li a:hover,
+        .sidebar .widget ul li:hover::before
+        {
             color: {{ $global_setting_data->theme_color }}
         }
 
         .home-banner,
-        .home-about .social ul li{
+        .home-about .social ul li,
+        .home-skill .progress-bar,
+        .service .item .button a,
+        .home-qualification .item .v-line,
+        .testimonial-carousel .owl-dot.active span,
+        .blog .item .button a,
+        .scrollup i,
+        .footer .social ul li
+       {
             background: {{ $global_setting_data->theme_color }}
         }
+
+        .portfolio .filter ul li{
+            background-color: #cad7da; 
+        }
+
+  
     </style>
 </head>
 <body>
