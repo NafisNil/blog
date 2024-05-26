@@ -32,7 +32,12 @@
         .footer .social ul li:hover a,
         .sidebar .widget h2,
         .sidebar .widget ul li a:hover,
-        .sidebar .widget ul li:hover::before
+        .sidebar .widget ul li:hover::before,
+        .sidebar .widget .project-detail .item .name,
+        .blog .page-link,
+        .comment h2,
+        .comment .comment-box .right .reply a,
+        .contact .item .icon
         {
             color: {{ $global_setting_data->theme_color }}
         }
@@ -45,13 +50,22 @@
         .testimonial-carousel .owl-dot.active span,
         .blog .item .button a,
         .scrollup i,
-        .footer .social ul li
+        .footer .social ul li,
+        .portfolio-detail .photo-carousel .owl-nav button.owl-next, .portfolio-detail .photo-carousel .owl-nav button.owl-prev,
+        .sidebar .widget .search button,
+        .blog-detail .sub .category a,
+        .comment button,
+        .contact .form-map button
        {
             background: {{ $global_setting_data->theme_color }}
         }
 
         .portfolio .filter ul li{
             background-color: #cad7da; 
+        }
+
+        .sidebar .widget .search button{
+            border-color: aquamarine;
         }
 
   
